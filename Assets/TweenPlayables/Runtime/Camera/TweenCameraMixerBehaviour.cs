@@ -8,21 +8,21 @@ namespace AnnulusGames.TweenPlayables
         private FloatValueMixer fovMixer = new FloatValueMixer();
         private ColorValueMixer backgroundColorMixer = new ColorValueMixer();
 
-        public override void Blend(TweenCameraBehaviour behaviour, float weight, float progress)
+        public override void Blend(Camera binding, TweenCameraBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.orthographicSize.active)
             {
-                orthoSizeMixer.Blend(behaviour.orthographicSize.Evaluate(progress), weight);
+                orthoSizeMixer.Blend(behaviour.orthographicSize.Evaluate(binding, progress), weight);
             }
 
             if (behaviour.fieldOfView.active)
             {
-                fovMixer.Blend(behaviour.fieldOfView.Evaluate(progress), weight);
+                fovMixer.Blend(behaviour.fieldOfView.Evaluate(binding, progress), weight);
             }
 
             if (behaviour.backgroundColor.active)
             {
-                backgroundColorMixer.Blend(behaviour.backgroundColor.Evaluate(progress), weight);
+                backgroundColorMixer.Blend(behaviour.backgroundColor.Evaluate(binding, progress), weight);
             }
         }
 

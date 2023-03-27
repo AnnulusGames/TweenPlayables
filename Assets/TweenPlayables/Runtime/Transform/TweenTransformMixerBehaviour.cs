@@ -8,21 +8,21 @@ namespace AnnulusGames.TweenPlayables
         private Vector3ValueMixer rotationMixer = new Vector3ValueMixer();
         private Vector3ValueMixer scaleMixer = new Vector3ValueMixer();
 
-        public override void Blend(TweenTransformBehaviour behaviour, float weight, float progress)
+        public override void Blend(Transform binding, TweenTransformBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.position.active)
             {
-                positionMixer.Blend(behaviour.position.Evaluate(progress), weight);
+                positionMixer.Blend(behaviour.position.Evaluate(binding, progress), weight);
             }
 
             if (behaviour.rotation.active)
             {
-                rotationMixer.Blend(behaviour.rotation.Evaluate(progress), weight);
+                rotationMixer.Blend(behaviour.rotation.Evaluate(binding, progress), weight);
             }
 
             if (behaviour.scale.active)
             {
-                scaleMixer.Blend(behaviour.scale.Evaluate(progress), weight);
+                scaleMixer.Blend(behaviour.scale.Evaluate(binding, progress), weight);
             }
         }
 

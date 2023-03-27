@@ -14,10 +14,10 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(LineRenderer playerData)
         {
-            startColor.standardValue = playerData.startColor;
-            endColor.standardValue = playerData.endColor;
-            startWidth.standardValue = playerData.startWidth;
-            endWidth.standardValue = playerData.endWidth;
+            startColor.SetInitialValue(playerData, playerData.startColor);
+            endColor.SetInitialValue(playerData, playerData.endColor);
+            startWidth.SetInitialValue(playerData, playerData.startWidth);
+            endWidth.SetInitialValue(playerData, playerData.endWidth);
         }
     }
 

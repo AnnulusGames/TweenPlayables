@@ -10,7 +10,7 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Slider playerData)
         {
-            value.standardValue = playerData.value;
+            value.SetInitialValue(playerData, playerData.value);
         }
     }
 

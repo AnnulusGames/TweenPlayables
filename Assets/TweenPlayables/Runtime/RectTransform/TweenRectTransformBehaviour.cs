@@ -13,10 +13,10 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(RectTransform playerData)
         {
-            anchoredPosition.standardValue = playerData.anchoredPosition3D;
-            sizeDelta.standardValue = playerData.sizeDelta;
-            rotation.standardValue = playerData.localEulerAngles;
-            scale.standardValue = playerData.localScale;
+            anchoredPosition.SetInitialValue(playerData, playerData.anchoredPosition3D);
+            sizeDelta.SetInitialValue(playerData, playerData.sizeDelta);
+            rotation.SetInitialValue(playerData, playerData.localEulerAngles);
+            scale.SetInitialValue(playerData, playerData.localScale);
         }
     }
 

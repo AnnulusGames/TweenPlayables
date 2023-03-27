@@ -6,11 +6,11 @@ namespace AnnulusGames.TweenPlayables
     {
         private ColorValueMixer colorMixer = new ColorValueMixer();
 
-        public override void Blend(TweenSpriteRendererBehaviour behaviour, float weight, float progress)
+        public override void Blend(SpriteRenderer binding, TweenSpriteRendererBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(progress), weight);
+                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
         }
 

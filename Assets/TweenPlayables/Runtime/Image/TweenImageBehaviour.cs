@@ -11,8 +11,8 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Image playerData)
         {
-            color.standardValue = playerData.color;
-            fillAmount.standardValue = playerData.fillAmount;
+            color.SetInitialValue(playerData, playerData.color);
+            fillAmount.SetInitialValue(playerData, playerData.fillAmount);
         }
     }
 

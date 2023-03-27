@@ -12,9 +12,9 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Renderer playerData)
         {
-            color.standardValue = playerData.sharedMaterial.color;
-            textureOffset.standardValue = playerData.sharedMaterial.mainTextureOffset;
-            textureScale.standardValue = playerData.sharedMaterial.mainTextureScale;
+            color.SetInitialValue(playerData, playerData.sharedMaterial.color);
+            textureOffset.SetInitialValue(playerData, playerData.sharedMaterial.mainTextureOffset);
+            textureScale.SetInitialValue(playerData, playerData.sharedMaterial.mainTextureScale);
         }
     }
 

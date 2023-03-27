@@ -31,19 +31,19 @@ namespace AnnulusGames.TweenPlayables
             base.ProcessFrame(playable, info, playerData);
         }
 
-        public override void Blend(TweenRendererBehaviour behaviour, float weight, float progress)
+        public override void Blend(Renderer binding, TweenRendererBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(progress), weight);
+                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
             if (behaviour.textureOffset.active)
             {
-                textureOffsetMixer.Blend(behaviour.textureOffset.Evaluate(progress), weight);
+                textureOffsetMixer.Blend(behaviour.textureOffset.Evaluate(binding, progress), weight);
             }
             if (behaviour.textureScale.active)
             {
-                textureScaleMixer.Blend(behaviour.textureScale.Evaluate(progress), weight);
+                textureScaleMixer.Blend(behaviour.textureScale.Evaluate(binding, progress), weight);
             }
         }
 

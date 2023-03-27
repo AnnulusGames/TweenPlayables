@@ -12,9 +12,9 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Transform playerData)
         {
-            position.standardValue = playerData.localPosition;
-            rotation.standardValue = playerData.localEulerAngles;
-            scale.standardValue = playerData.localScale;
+            position.SetInitialValue(playerData, playerData.localPosition);
+            rotation.SetInitialValue(playerData, playerData.localEulerAngles);
+            scale.SetInitialValue(playerData, playerData.localScale);
         }
     }
 

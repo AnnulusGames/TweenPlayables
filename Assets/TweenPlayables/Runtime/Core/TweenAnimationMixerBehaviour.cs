@@ -56,7 +56,7 @@ namespace AnnulusGames.TweenPlayables
                     continue;
                 }
 
-                Blend(behaviour, inputWeight, inputProgress);
+                Blend(target, behaviour, inputWeight, inputProgress);
                 activeInputCount++;
             }
 
@@ -64,14 +64,14 @@ namespace AnnulusGames.TweenPlayables
             {
                 if (lastBehaviour != null)
                 {
-                    Blend(lastBehaviour, 1, 1);
+                    Blend(target, lastBehaviour, 1, 1);
                 }
             }
 
             Apply(target);
         }
 
-        public abstract void Blend(TAnimationBehaviour behaviour, float weight, float progress);
+        public abstract void Blend(TBinding binding, TAnimationBehaviour behaviour, float weight, float progress);
         public abstract void Apply(TBinding binding);
     }
 }

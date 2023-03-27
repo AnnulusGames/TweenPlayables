@@ -13,23 +13,34 @@ namespace AnnulusGames.TweenPlayables
         public EaseParameter ease;
         public bool relative;
 
-        public T standardValue { get; set; }
+        private Dictionary<object, T> initialValueDictionary = new Dictionary<object, T>();
 
-        public abstract T Evaluate(float t);
-        public abstract T GetRelativeValue(T value);
+        public T GetInitialValue(object key)
+        {
+            initialValueDictionary.TryGetValue(key, out var value);
+            return value;
+        }
+
+        public void SetInitialValue(object key, T value)
+        {
+            initialValueDictionary.TryAdd(key, value);
+        }
+
+        public abstract T Evaluate(object key, float t);
+        public abstract T GetRelativeValue(object key, T value);
     }
 
     [Serializable]
     public class Vector3TweenParameter : TweenParameter<Vector3>
     {
-        public override Vector3 GetRelativeValue(Vector3 value)
+        public override Vector3 GetRelativeValue(object key, Vector3 value)
         {
-            return standardValue + value;
+            return GetInitialValue(key) + value;
         }
 
-        public override Vector3 Evaluate(float t)
+        public override Vector3 Evaluate(object key, float t)
         {
-            if (relative) return Vector3.LerpUnclamped(GetRelativeValue(startValue), GetRelativeValue(endValue), ease.Evaluate(t));
+            if (relative) return Vector3.LerpUnclamped(GetRelativeValue(key, startValue), GetRelativeValue(key, endValue), ease.Evaluate(t));
             else return Vector3.LerpUnclamped(startValue, endValue, ease.Evaluate(t));
         }
     }
@@ -37,14 +48,14 @@ namespace AnnulusGames.TweenPlayables
     [Serializable]
     public class Vector2TweenParameter : TweenParameter<Vector2>
     {
-        public override Vector2 GetRelativeValue(Vector2 value)
+        public override Vector2 GetRelativeValue(object key, Vector2 value)
         {
-            return standardValue + value;
+            return GetInitialValue(key)  + value;
         }
 
-        public override Vector2 Evaluate(float t)
+        public override Vector2 Evaluate(object key, float t)
         {
-            if (relative) return Vector2.LerpUnclamped(GetRelativeValue(startValue), GetRelativeValue(endValue), ease.Evaluate(t));
+            if (relative) return Vector2.LerpUnclamped(GetRelativeValue(key, startValue), GetRelativeValue(key, endValue), ease.Evaluate(t));
             else return Vector2.LerpUnclamped(startValue, endValue, ease.Evaluate(t));
         }
     }
@@ -58,14 +69,14 @@ namespace AnnulusGames.TweenPlayables
             endValue = Color.white;
         }
 
-        public override Color GetRelativeValue(Color value)
+        public override Color GetRelativeValue(object key, Color value)
         {
-            return (standardValue + value) * 0.5f;
+            return (GetInitialValue(key)  + value) * 0.5f;
         }
 
-        public override Color Evaluate(float t)
+        public override Color Evaluate(object key, float t)
         {
-            if (relative) return Color.LerpUnclamped(GetRelativeValue(startValue), GetRelativeValue(endValue), ease.Evaluate(t));
+            if (relative) return Color.LerpUnclamped(GetRelativeValue(key, startValue), GetRelativeValue(key, endValue), ease.Evaluate(t));
             else return Color.LerpUnclamped(startValue, endValue, ease.Evaluate(t));
         }
     }
@@ -73,14 +84,14 @@ namespace AnnulusGames.TweenPlayables
     [Serializable]
     public class FloatTweenParameter : TweenParameter<float>
     {
-        public override float GetRelativeValue(float value)
+        public override float GetRelativeValue(object key, float value)
         {
-            return standardValue + value;
+            return GetInitialValue(key)  + value;
         }
 
-        public override float Evaluate(float t)
+        public override float Evaluate(object key, float t)
         {
-            if (relative) return Mathf.LerpUnclamped(GetRelativeValue(startValue), GetRelativeValue(endValue), ease.Evaluate(t));
+            if (relative) return Mathf.LerpUnclamped(GetRelativeValue(key, startValue), GetRelativeValue(key, endValue), ease.Evaluate(t));
             else return Mathf.LerpUnclamped(startValue, endValue, ease.Evaluate(t));
         }
     }
@@ -88,14 +99,14 @@ namespace AnnulusGames.TweenPlayables
     [Serializable]
     public class IntTweenParameter : TweenParameter<int>
     {
-        public override int GetRelativeValue(int value)
+        public override int GetRelativeValue(object key, int value)
         {
-            return standardValue + value;
+            return GetInitialValue(key)  + value;
         }
 
-        public override int Evaluate(float t)
+        public override int Evaluate(object key, float t)
         {
-            if (relative) return (int)Mathf.LerpUnclamped(GetRelativeValue(startValue), GetRelativeValue(endValue), ease.Evaluate(t));
+            if (relative) return (int)Mathf.LerpUnclamped(GetRelativeValue(key, startValue), GetRelativeValue(key, endValue), ease.Evaluate(t));
             else return (int)Mathf.LerpUnclamped(startValue, endValue, ease.Evaluate(t));
         }
     }
@@ -121,7 +132,7 @@ namespace AnnulusGames.TweenPlayables
             };
         }
 
-        public override VertexGradient GetRelativeValue(VertexGradient value)
+        public override VertexGradient GetRelativeValue(object key, VertexGradient value)
         {
             return new VertexGradient()
             {
@@ -132,12 +143,12 @@ namespace AnnulusGames.TweenPlayables
             };
         }
 
-        public override VertexGradient Evaluate(float t)
+        public override VertexGradient Evaluate(object key, float t)
         {
             if (relative)
             {
-                var startValue = GetRelativeValue(this.startValue);
-                var endValue = GetRelativeValue(this.endValue);
+                var startValue = GetRelativeValue(key, this.startValue);
+                var endValue = GetRelativeValue(key, this.endValue);
                 return new VertexGradient()
                 {
                     topLeft = Color.LerpUnclamped(startValue.topLeft, endValue.topLeft, t),

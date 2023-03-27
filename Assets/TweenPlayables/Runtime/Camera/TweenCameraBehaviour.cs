@@ -12,9 +12,9 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Camera playerData)
         {
-            orthographicSize.standardValue = playerData.orthographicSize;
-            fieldOfView.standardValue = playerData.fieldOfView;
-            backgroundColor.standardValue = playerData.backgroundColor;
+            orthographicSize.SetInitialValue(playerData, playerData.orthographicSize);
+            fieldOfView.SetInitialValue(playerData, playerData.fieldOfView);
+            backgroundColor.SetInitialValue(playerData, playerData.backgroundColor);
         }
     }
 

@@ -12,35 +12,35 @@ namespace AnnulusGames.TweenPlayables
         private FloatValueMixer paragraphSpacingMixer = new FloatValueMixer();
         private VertexGradientValueMixer colorGradientMixer = new VertexGradientValueMixer();
 
-        public override void Blend(TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
+        public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(progress), weight);
+                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
             if (behaviour.fontSize.active)
             {
-                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(progress), weight);
+                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
             }
             if (behaviour.characterSpacing.active)
             {
-                characterSpacingMixer.Blend(behaviour.characterSpacing.Evaluate(progress), weight);
+                characterSpacingMixer.Blend(behaviour.characterSpacing.Evaluate(binding, progress), weight);
             }
             if (behaviour.wordSpacing.active)
             {
-                wordSpacingMixer.Blend(behaviour.wordSpacing.Evaluate(progress), weight);
+                wordSpacingMixer.Blend(behaviour.wordSpacing.Evaluate(binding, progress), weight);
             }
             if (behaviour.lineSpacing.active)
             {
-                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(progress), weight);
+                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
             }
             if (behaviour.paragraphSpacing.active)
             {
-                paragraphSpacingMixer.Blend(behaviour.paragraphSpacing.Evaluate(progress), weight);
+                paragraphSpacingMixer.Blend(behaviour.paragraphSpacing.Evaluate(binding, progress), weight);
             }
             if (behaviour.colorGradient.active)
             {
-                colorGradientMixer.Blend(behaviour.colorGradient.Evaluate(progress), weight);
+                colorGradientMixer.Blend(behaviour.colorGradient.Evaluate(binding, progress), weight);
             }
         }
 

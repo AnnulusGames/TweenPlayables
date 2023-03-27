@@ -7,15 +7,15 @@ namespace AnnulusGames.TweenPlayables
         private ColorValueMixer colorMixer = new ColorValueMixer();
         private FloatValueMixer fillAmountMixer = new FloatValueMixer();
 
-        public override void Blend(TweenImageBehaviour behaviour, float weight, float progress)
+        public override void Blend(Image binding, TweenImageBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(progress), weight);
+                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
             if (behaviour.fillAmount.active)
             {
-                fillAmountMixer.Blend(behaviour.fillAmount.Evaluate(progress), weight);
+                fillAmountMixer.Blend(behaviour.fillAmount.Evaluate(binding, progress), weight);
             }
         }
 

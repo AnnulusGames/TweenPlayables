@@ -11,8 +11,8 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(AudioSource playerData)
         {
-            volume.standardValue = playerData.volume;
-            pitch.standardValue = playerData.pitch;
+            volume.SetInitialValue(playerData, playerData.volume);
+            pitch.SetInitialValue(playerData, playerData.pitch);
         }
     }
 

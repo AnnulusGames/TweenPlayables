@@ -7,15 +7,15 @@ namespace AnnulusGames.TweenPlayables
         private ColorValueMixer colorMixer = new ColorValueMixer();
         private Vector2ValueMixer distanceMixer = new Vector2ValueMixer();
 
-        public override void Blend(TweenShadowBehaviour behaviour, float weight, float progress)
+        public override void Blend(Shadow binding, TweenShadowBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(progress), weight);
+                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
             if (behaviour.distance.active)
             {
-                distanceMixer.Blend(behaviour.distance.Evaluate(progress), weight);
+                distanceMixer.Blend(behaviour.distance.Evaluate(binding, progress), weight);
             }
         }
 

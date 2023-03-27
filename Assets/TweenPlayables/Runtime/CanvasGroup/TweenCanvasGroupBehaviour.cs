@@ -10,7 +10,7 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(CanvasGroup playerData)
         {
-            alpha.standardValue = playerData.alpha;
+            alpha.SetInitialValue(playerData, playerData.alpha);
         }
     }
 

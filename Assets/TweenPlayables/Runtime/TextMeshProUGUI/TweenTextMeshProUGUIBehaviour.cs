@@ -17,13 +17,13 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(TextMeshProUGUI playerData)
         {
-            color.standardValue = playerData.color;
-            fontSize.standardValue = playerData.fontSize;
-            wordSpacing.standardValue = playerData.wordSpacing;
-            lineSpacing.standardValue = playerData.lineSpacing;
-            characterSpacing.standardValue = playerData.characterSpacing;
-            paragraphSpacing.standardValue = playerData.paragraphSpacing;
-            colorGradient.standardValue = playerData.colorGradient;
+            color.SetInitialValue(playerData, playerData.color);
+            fontSize.SetInitialValue(playerData, playerData.fontSize);
+            wordSpacing.SetInitialValue(playerData, playerData.wordSpacing);
+            lineSpacing.SetInitialValue(playerData, playerData.lineSpacing);
+            characterSpacing.SetInitialValue(playerData, playerData.characterSpacing);
+            paragraphSpacing.SetInitialValue(playerData, playerData.paragraphSpacing);
+            colorGradient.SetInitialValue(playerData, playerData.colorGradient);
         }
     }
 

@@ -14,26 +14,26 @@ namespace AnnulusGames.TweenPlayables
         private float blendedEndWidth;
         private int endWidthInputCount;
 
-        public override void Blend(TweenLineRendererBehaviour behaviour, float weight, float progress)
+        public override void Blend(LineRenderer binding, TweenLineRendererBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.startColor.active)
             {
-                blendedStartColor += behaviour.startColor.Evaluate(progress) * weight;
+                blendedStartColor += behaviour.startColor.Evaluate(binding, progress) * weight;
                 startColorInputCount++;
             }
             if (behaviour.endColor.active)
             {
-                blendedEndColor += behaviour.endColor.Evaluate(progress) * weight;
+                blendedEndColor += behaviour.endColor.Evaluate(binding, progress) * weight;
                 endColorInputCount++;
             }
             if (behaviour.startWidth.active)
             {
-                blendedStartWidth += behaviour.startWidth.Evaluate(progress) * weight;
+                blendedStartWidth += behaviour.startWidth.Evaluate(binding, progress) * weight;
                 startWidthInputCount++;
             }
             if (behaviour.endWidth.active)
             {
-                blendedEndWidth += behaviour.endWidth.Evaluate(progress) * weight;
+                blendedEndWidth += behaviour.endWidth.Evaluate(binding, progress) * weight;
                 endWidthInputCount++;
             }
         }

@@ -12,9 +12,9 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Text playerData)
         {
-            color.standardValue = playerData.color;
-            fontSize.standardValue = playerData.fontSize;
-            lineSpacing.standardValue = playerData.lineSpacing;
+            color.SetInitialValue(playerData, playerData.color);
+            fontSize.SetInitialValue(playerData, playerData.fontSize);
+            lineSpacing.SetInitialValue(playerData, playerData.lineSpacing);
         }
     }
 

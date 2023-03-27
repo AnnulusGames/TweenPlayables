@@ -6,11 +6,11 @@ namespace AnnulusGames.TweenPlayables
     {
         private FloatValueMixer valueMixer = new FloatValueMixer();
 
-        public override void Blend(TweenSliderBehaviour behaviour, float weight, float progress)
+        public override void Blend(Slider binding, TweenSliderBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.value.active)
             {
-                valueMixer.Blend(behaviour.value.Evaluate(progress), weight);
+                valueMixer.Blend(behaviour.value.Evaluate(binding, progress), weight);
             }
         }
 

@@ -11,7 +11,7 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(SpriteRenderer playerData)
         {
-            color.standardValue = playerData.color;
+            color.SetInitialValue(playerData, playerData.color);
         }
     }
 

@@ -8,19 +8,19 @@ namespace AnnulusGames.TweenPlayables
         private IntValueMixer fontSizeMixer = new IntValueMixer();
         private FloatValueMixer lineSpacingMixer = new FloatValueMixer();
 
-        public override void Blend(TweenTextBehaviour behaviour, float weight, float progress)
+        public override void Blend(Text binding, TweenTextBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(progress), weight);
+                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
             if (behaviour.fontSize.active)
             {
-                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(progress), weight);
+                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
             }
             if (behaviour.lineSpacing.active)
             {
-                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(progress), weight);
+                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
             }
         }
 

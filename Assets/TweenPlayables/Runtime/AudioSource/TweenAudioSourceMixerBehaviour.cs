@@ -7,16 +7,16 @@ namespace AnnulusGames.TweenPlayables
         private FloatValueMixer volumeMixer = new FloatValueMixer();
         private FloatValueMixer pitchMixer = new FloatValueMixer();
 
-        public override void Blend(TweenAudioSourceBehaviour behaviour, float weight, float progress)
+        public override void Blend(AudioSource binding, TweenAudioSourceBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.volume.active)
             {
-                volumeMixer.Blend(behaviour.volume.Evaluate(progress), weight);
+                volumeMixer.Blend(behaviour.volume.Evaluate(binding, progress), weight);
             }
 
             if (behaviour.pitch.active)
             {
-                pitchMixer.Blend(behaviour.pitch.Evaluate(progress), weight);
+                pitchMixer.Blend(behaviour.pitch.Evaluate(binding, progress), weight);
             }
         }
 

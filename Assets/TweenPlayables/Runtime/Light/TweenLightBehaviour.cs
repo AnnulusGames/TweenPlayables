@@ -12,9 +12,9 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Light playerData)
         {
-            color.standardValue = playerData.color;
-            intensity.standardValue = playerData.intensity;
-            shadowStrength.startValue = playerData.shadowStrength;
+            color.SetInitialValue(playerData, playerData.color);
+            intensity.SetInitialValue(playerData, playerData.intensity);
+            shadowStrength.SetInitialValue(playerData, playerData.shadowStrength);
         }
     }
 

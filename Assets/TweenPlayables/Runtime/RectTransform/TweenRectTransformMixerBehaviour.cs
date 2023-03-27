@@ -9,23 +9,23 @@ namespace AnnulusGames.TweenPlayables
         private Vector3ValueMixer rotationMixer = new Vector3ValueMixer();
         private Vector3ValueMixer scaleMixer = new Vector3ValueMixer();
 
-        public override void Blend(TweenRectTransformBehaviour behaviour, float weight, float progress)
+        public override void Blend(RectTransform binding, TweenRectTransformBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.anchoredPosition.active)
             {
-                anchoredPositionMixer.Blend(behaviour.anchoredPosition.Evaluate(progress), weight);
+                anchoredPositionMixer.Blend(behaviour.anchoredPosition.Evaluate(binding, progress), weight);
             }
             if (behaviour.sizeDelta.active)
             {
-                sizeDeltaMixer.Blend(behaviour.sizeDelta.Evaluate(progress), weight);
+                sizeDeltaMixer.Blend(behaviour.sizeDelta.Evaluate(binding, progress), weight);
             }
             if (behaviour.rotation.active)
             {
-                rotationMixer.Blend(behaviour.rotation.Evaluate(progress), weight);
+                rotationMixer.Blend(behaviour.rotation.Evaluate(binding, progress), weight);
             }
             if (behaviour.scale.active)
             {
-                scaleMixer.Blend(behaviour.scale.Evaluate(progress), weight);
+                scaleMixer.Blend(behaviour.scale.Evaluate(binding, progress), weight);
             }
         }
 

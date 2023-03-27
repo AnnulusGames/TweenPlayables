@@ -13,21 +13,21 @@ namespace AnnulusGames.TweenPlayables
         private float blendedShadowStrength;
         private int shadowStrengthInputCount;
 
-        public override void Blend(TweenLightBehaviour behaviour, float weight, float progress)
+        public override void Blend(Light binding, TweenLightBehaviour behaviour, float weight, float progress)
         {
             if (behaviour.color.active)
             {
-                blendedColor += behaviour.color.Evaluate(progress) * weight;
+                blendedColor += behaviour.color.Evaluate(binding, progress) * weight;
                 colorInputCount++;
             }
             if (behaviour.intensity.active)
             {
-                blendedIntensity += behaviour.intensity.Evaluate(progress) * weight;
+                blendedIntensity += behaviour.intensity.Evaluate(binding, progress) * weight;
                 intensityInputCount++;
             }
             if (behaviour.shadowStrength.active)
             {
-                blendedShadowStrength += behaviour.shadowStrength.Evaluate(progress) * weight;
+                blendedShadowStrength += behaviour.shadowStrength.Evaluate(binding, progress) * weight;
                 shadowStrengthInputCount++;
             }
         }

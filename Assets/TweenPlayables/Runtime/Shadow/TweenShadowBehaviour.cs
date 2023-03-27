@@ -11,8 +11,8 @@ namespace AnnulusGames.TweenPlayables
 
         public override void OnTweenInitialize(Shadow playerData)
         {
-            color.standardValue = playerData.effectColor;
-            distance.standardValue = playerData.effectDistance;
+            color.SetInitialValue(playerData, playerData.effectColor);
+            distance.SetInitialValue(playerData, playerData.effectDistance);
         }
     }
 

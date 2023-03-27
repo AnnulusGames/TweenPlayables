@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -9,11 +10,15 @@ namespace AnnulusGames.TweenPlayables
         private Vector2ValueMixer textureOffsetMixer = new Vector2ValueMixer();
         private Vector2ValueMixer textureScaleMixer = new Vector2ValueMixer();
 
-        private Material material = null;
+        private Dictionary<object, Material> materialDictionary = new Dictionary<object, Material>();
 
         public override void OnPlayableDestroy(Playable playable)
         {
-            if (material != null) Object.DestroyImmediate(material);
+            foreach (Material m in materialDictionary.Values)
+            {
+                Object.DestroyImmediate(m);
+            }
+            materialDictionary.Clear();
         }
 
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
@@ -21,10 +26,11 @@ namespace AnnulusGames.TweenPlayables
             var renderer = playerData as Renderer;
             if (renderer != null)
             {
-                if (!material)
+                if (!materialDictionary.ContainsKey(playerData))
                 {
-                    material = new Material(renderer.sharedMaterial);
+                    var material = new Material(renderer.sharedMaterial);
                     renderer.material = material;
+                    materialDictionary.Add(playerData, material);
                 }
             }
 
@@ -51,15 +57,15 @@ namespace AnnulusGames.TweenPlayables
         {
             if (colorMixer.ValueCount > 0)
             {
-                material.color = colorMixer.Value;
+                materialDictionary[binding].color = colorMixer.Value;
             }
             if (textureOffsetMixer.ValueCount > 0)
             {
-                material.mainTextureOffset = textureOffsetMixer.Value;
+                materialDictionary[binding].mainTextureOffset = textureOffsetMixer.Value;
             }
             if (textureScaleMixer.ValueCount > 0)
             {
-                material.mainTextureScale = textureScaleMixer.Value;
+                materialDictionary[binding].mainTextureScale = textureScaleMixer.Value;
             }
 
             colorMixer.Clear();

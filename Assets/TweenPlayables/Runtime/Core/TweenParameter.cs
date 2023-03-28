@@ -23,7 +23,14 @@ namespace AnnulusGames.TweenPlayables
 
         public void SetInitialValue(object key, T value)
         {
-            initialValueDictionary.TryAdd(key, value);
+            if (initialValueDictionary.ContainsKey(key))
+            {
+                initialValueDictionary[key] = value;
+            }
+            else
+            {
+                initialValueDictionary.TryAdd(key, value);
+            }
         }
 
         public abstract T Evaluate(object key, float t);
@@ -71,7 +78,7 @@ namespace AnnulusGames.TweenPlayables
 
         public override Color GetRelativeValue(object key, Color value)
         {
-            return (GetInitialValue(key)  + value) * 0.5f;
+            return (GetInitialValue(key) + value) * 0.5f;
         }
 
         public override Color Evaluate(object key, float t)
@@ -86,7 +93,7 @@ namespace AnnulusGames.TweenPlayables
     {
         public override float GetRelativeValue(object key, float value)
         {
-            return GetInitialValue(key)  + value;
+            return GetInitialValue(key) + value;
         }
 
         public override float Evaluate(object key, float t)
@@ -101,7 +108,7 @@ namespace AnnulusGames.TweenPlayables
     {
         public override int GetRelativeValue(object key, int value)
         {
-            return GetInitialValue(key)  + value;
+            return GetInitialValue(key) + value;
         }
 
         public override int Evaluate(object key, float t)

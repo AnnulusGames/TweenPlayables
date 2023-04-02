@@ -46,7 +46,7 @@ namespace AnnulusGames.TweenPlayables.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float height = 21f;
+            float height = 27f;
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("color"));
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("fontSize"));
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("characterSpacing"));

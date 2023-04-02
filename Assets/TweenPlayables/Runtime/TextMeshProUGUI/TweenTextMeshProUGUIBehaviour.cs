@@ -14,6 +14,7 @@ namespace AnnulusGames.TweenPlayables
         public FloatTweenParameter lineSpacing;
         public FloatTweenParameter paragraphSpacing;
         public VertexGradientTweenParamterer colorGradient;
+        public StringTweenParameter text;
 
         public override void OnTweenInitialize(TextMeshProUGUI playerData)
         {
@@ -24,6 +25,7 @@ namespace AnnulusGames.TweenPlayables
             characterSpacing.SetInitialValue(playerData, playerData.characterSpacing);
             paragraphSpacing.SetInitialValue(playerData, playerData.paragraphSpacing);
             colorGradient.SetInitialValue(playerData, playerData.colorGradient);
+            text.SetInitialValue(playerData, playerData.text);
         }
     }
 

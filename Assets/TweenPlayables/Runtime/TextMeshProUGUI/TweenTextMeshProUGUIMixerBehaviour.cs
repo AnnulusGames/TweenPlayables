@@ -11,6 +11,7 @@ namespace AnnulusGames.TweenPlayables
         private FloatValueMixer lineSpacingMixer = new FloatValueMixer();
         private FloatValueMixer paragraphSpacingMixer = new FloatValueMixer();
         private VertexGradientValueMixer colorGradientMixer = new VertexGradientValueMixer();
+        private string textValue = null;
 
         public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
         {
@@ -41,6 +42,10 @@ namespace AnnulusGames.TweenPlayables
             if (behaviour.colorGradient.active)
             {
                 colorGradientMixer.Blend(behaviour.colorGradient.Evaluate(binding, progress), weight);
+            }
+            if (behaviour.text.active)
+            {
+                textValue = behaviour.text.Evaluate(binding, progress);
             }
         }
 
@@ -74,6 +79,10 @@ namespace AnnulusGames.TweenPlayables
             {
                 binding.colorGradient = colorGradientMixer.Value;
             }
+            if (textValue != null)
+            {
+                binding.text = textValue;
+            }
 
             colorMixer.Clear();
             fontSizeMixer.Clear();
@@ -82,6 +91,7 @@ namespace AnnulusGames.TweenPlayables
             lineSpacingMixer.Clear();
             paragraphSpacingMixer.Clear();
             colorGradientMixer.Clear();
+            textValue = null;
         }
     }
 }

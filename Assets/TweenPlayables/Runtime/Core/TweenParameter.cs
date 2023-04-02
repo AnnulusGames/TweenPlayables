@@ -119,6 +119,23 @@ namespace AnnulusGames.TweenPlayables
     }
 
     [Serializable]
+    public class StringTweenParameter : TweenParameter<string>
+    {
+        public ScrambleMode scrambleMode = ScrambleMode.None;
+        public string customScrambleChars;
+
+        public override string GetRelativeValue(object key, string value)
+        {
+            return value;
+        }
+
+        public override string Evaluate(object key, float t)
+        {
+            return StringTweenUtility.TweenText(startValue, endValue, t, scrambleMode, customScrambleChars);
+        }
+    }
+
+    [Serializable]
     public class VertexGradientTweenParamterer : TweenParameter<VertexGradient>
     {
         public VertexGradientTweenParamterer()

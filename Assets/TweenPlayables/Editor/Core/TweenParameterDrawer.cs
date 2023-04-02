@@ -6,7 +6,7 @@ namespace AnnulusGames.TweenPlayables.Editor
     [CustomPropertyDrawer(typeof(TweenParameter<>), true)]
     public class TweenParamterDrawer : PropertyDrawer
     {
-        private float headerHeight = EditorGUIUtility.singleLineHeight * 1.2f;
+        protected float headerHeight = EditorGUIUtility.singleLineHeight * 1.2f;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -34,12 +34,10 @@ namespace AnnulusGames.TweenPlayables.Editor
             {
                 position.y += headerHeight + EditorGUIUtility.standardVerticalSpacing;
                 position.xMin += 15f;
+                position.xMax -= 5f;
                 using (new EditorGUI.DisabledGroupScope(!activeProperty.boolValue))
                 {
-                    Field(ref position, property.FindPropertyRelative("startValue"), "Start");
-                    Field(ref position, property.FindPropertyRelative("endValue"), "End");
-                    Field(ref position, property.FindPropertyRelative("ease"), "Ease");
-                    Field(ref position, property.FindPropertyRelative("relative"), "Relative");
+                    DrawProperties(position, property);
                 }
             }
 
@@ -51,26 +49,65 @@ namespace AnnulusGames.TweenPlayables.Editor
             float height = headerHeight;
             if (property.isExpanded)
             {
-                AddHeight(ref height, property.FindPropertyRelative("startValue"));
-                AddHeight(ref height, property.FindPropertyRelative("endValue"));
-                AddHeight(ref height, property.FindPropertyRelative("ease"));
-                AddHeight(ref height, property.FindPropertyRelative("relative"));
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("startValue"));
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("endValue"));
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("ease"));
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("relative"));
                 height += EditorGUIUtility.standardVerticalSpacing;
             }
             height += EditorGUIUtility.standardVerticalSpacing;
             return height;
         }
 
-        private void Field(ref Rect position, SerializedProperty property, string label)
+        public virtual void DrawProperties(Rect position, SerializedProperty property)
         {
-            position.height = EditorGUIUtility.singleLineHeight;
-            EditorGUI.PropertyField(position, property, new GUIContent(label), true);
-            position.y += EditorGUI.GetPropertyHeight(property) + EditorGUIUtility.standardVerticalSpacing;
+            GUIHelper.Field(ref position, property.FindPropertyRelative("startValue"), "Start");
+            GUIHelper.Field(ref position, property.FindPropertyRelative("endValue"), "End");
+            GUIHelper.Field(ref position, property.FindPropertyRelative("ease"), "Ease");
+            GUIHelper.Field(ref position, property.FindPropertyRelative("relative"), "Relative");
+        }
+    }
+
+    [CustomPropertyDrawer(typeof(StringTweenParameter))]
+    public class StringTweenParameterDrawer : TweenParamterDrawer
+    {
+        public override void DrawProperties(Rect position, SerializedProperty property)
+        {
+            GUIHelper.Field(ref position, property.FindPropertyRelative("startValue"), "Start");
+            GUIHelper.Field(ref position, property.FindPropertyRelative("endValue"), "End");
+            GUIHelper.Field(ref position, property.FindPropertyRelative("ease"), "Ease");
+
+            SerializedProperty scrambleModeProeprty = property.FindPropertyRelative("scrambleMode");
+            GUIHelper.Field(ref position, scrambleModeProeprty, "Scramble Mode");
+
+            if (scrambleModeProeprty.enumValueIndex == (int)ScrambleMode.Custom)
+            {
+                GUIHelper.Field(ref position,property.FindPropertyRelative("customScrambleChars"), "Custom Scramble Chars");
+            }
         }
 
-        private void AddHeight(ref float height, SerializedProperty property, bool insertSpace = true)
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            height += EditorGUI.GetPropertyHeight(property) + EditorGUIUtility.standardVerticalSpacing;
+            float height = headerHeight;
+            if (property.isExpanded)
+            {
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("startValue"));
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("endValue"));
+                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("ease"));
+
+                SerializedProperty scrambleModeProeprty = property.FindPropertyRelative("scrambleMode");
+                GUIHelper.AddPropertyHeight(ref height, scrambleModeProeprty);
+
+                if (scrambleModeProeprty.enumValueIndex == (int)ScrambleMode.Custom)
+                {
+                    GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("customScrambleChars"));
+                }
+
+                height += EditorGUIUtility.standardVerticalSpacing;
+            }
+            height += EditorGUIUtility.standardVerticalSpacing;
+
+            return height;
         }
     }
 }

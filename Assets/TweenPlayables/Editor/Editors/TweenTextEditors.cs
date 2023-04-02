@@ -31,6 +31,8 @@ namespace AnnulusGames.TweenPlayables.Editor
             GUIHelper.Field(ref position, property.FindPropertyRelative("fontSize"));
             position.y += 2f;
             GUIHelper.Field(ref position, property.FindPropertyRelative("lineSpacing"));
+            position.y += 2f;
+            GUIHelper.Field(ref position, property.FindPropertyRelative("text"));
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -39,6 +41,7 @@ namespace AnnulusGames.TweenPlayables.Editor
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("color"));
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("fontSize"));
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("lineSpacing"));
+            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("text"));
 
             return height;
         }

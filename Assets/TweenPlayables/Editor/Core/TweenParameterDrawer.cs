@@ -1,3 +1,5 @@
+using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEditor;
 
@@ -73,8 +75,8 @@ namespace AnnulusGames.TweenPlayables.Editor
     {
         public override void DrawProperties(Rect position, SerializedProperty property)
         {
-            GUIHelper.Field(ref position, property.FindPropertyRelative("startValue"), "Start");
-            GUIHelper.Field(ref position, property.FindPropertyRelative("endValue"), "End");
+            DrawTextArea(ref position, property.FindPropertyRelative("startValue"), new GUIContent("Start"));
+            DrawTextArea(ref position, property.FindPropertyRelative("endValue"), new GUIContent("End"));
             GUIHelper.Field(ref position, property.FindPropertyRelative("ease"), "Ease");
 
             SerializedProperty scrambleModeProeprty = property.FindPropertyRelative("scrambleMode");
@@ -91,8 +93,10 @@ namespace AnnulusGames.TweenPlayables.Editor
             float height = headerHeight;
             if (property.isExpanded)
             {
-                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("startValue"));
-                GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("endValue"));
+                height += (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) * 2;
+                height += GetTextAreaHeight(property.FindPropertyRelative("startValue").stringValue);
+                height += GetTextAreaHeight(property.FindPropertyRelative("endValue").stringValue);
+
                 GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("ease"));
 
                 SerializedProperty scrambleModeProeprty = property.FindPropertyRelative("scrambleMode");
@@ -108,6 +112,51 @@ namespace AnnulusGames.TweenPlayables.Editor
             height += EditorGUIUtility.standardVerticalSpacing;
 
             return height;
+        }
+
+        private void DrawTextArea(ref Rect position, SerializedProperty property, GUIContent label)
+        {
+            Rect labelRect = new Rect()
+            {
+                x = position.x,
+                y = position.y,
+                width = position.width,
+                height = EditorGUIUtility.singleLineHeight
+            };
+
+            EditorGUI.LabelField(labelRect, label.text);
+
+            EditorGUI.BeginChangeCheck();
+
+            Rect textAreaRect = new Rect()
+            {
+                x = labelRect.x,
+                y = labelRect.y + EditorGUIUtility.singleLineHeight,
+                width = labelRect.width,
+                height = GetTextAreaHeight(property.stringValue)
+            };
+
+            string textAreaValue = EditorGUI.TextArea(textAreaRect, property.stringValue);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                property.stringValue = textAreaValue;
+            }
+
+            position.y += textAreaRect.height + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+        }
+
+        private int GetNumberOfLines(string text)
+        {
+            string content = Regex.Replace(text, @"\r\n|\n\r|\r|\n", Environment.NewLine);
+            string[] lines = content.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            return lines.Length;
+        }
+
+        private float GetTextAreaHeight(string text)
+        {
+            float height = (EditorGUIUtility.singleLineHeight - 3.0f) * GetNumberOfLines(text) + 3.0f;
+            return Math.Max(height, EditorGUIUtility.singleLineHeight * 2.5f);
         }
     }
 }

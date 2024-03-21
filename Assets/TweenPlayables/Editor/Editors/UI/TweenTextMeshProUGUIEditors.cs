@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
-using TMPro;
 
 namespace TweenPlayables.Editor
 {
+    [Obsolete]
     [CustomTimelineEditor(typeof(TweenTextMeshProUGUITrack))]
     public class TweenTextMeshProUGUITrackEditor : TweenAnimationTrackEditor
     {
@@ -13,6 +14,7 @@ namespace TweenPlayables.Editor
         public override string defaultTrackName => "Tween TextMeshProUGUI Track";
     }
 
+    [Obsolete]
     [CustomTimelineEditor(typeof(TweenTextMeshProUGUIClip))]
     public class TweenTextMeshProUGUIClipEditor : TweenAnimationClipEditor
     {
@@ -21,6 +23,7 @@ namespace TweenPlayables.Editor
         public override Texture2D clipIcon => Styling.textMeshProUGUIIcon;
     }
 
+    [Obsolete]
     [CustomPropertyDrawer(typeof(TweenTextMeshProUGUIBehaviour))]
     public class TweenTextMeshProUGUIBehaviourDrawer : PropertyDrawer
     {

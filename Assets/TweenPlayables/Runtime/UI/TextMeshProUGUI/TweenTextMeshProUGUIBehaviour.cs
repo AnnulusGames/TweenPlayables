@@ -5,6 +5,7 @@ using TMPro;
 namespace TweenPlayables
 {
     [Serializable]
+    [Obsolete]
     public sealed class TweenTextMeshProUGUIBehaviour : TweenAnimationBehaviour<TextMeshProUGUI>
     {
         [SerializeField] ColorTweenParameter color;

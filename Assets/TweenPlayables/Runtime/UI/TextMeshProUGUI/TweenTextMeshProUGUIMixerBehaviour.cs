@@ -1,7 +1,9 @@
+using System;
 using TMPro;
 
 namespace TweenPlayables
 {
+    [Obsolete]
     public sealed class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
     {
         readonly ColorValueMixer colorMixer = new();

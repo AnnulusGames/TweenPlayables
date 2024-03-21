@@ -4,10 +4,10 @@ using UnityEngine;
 namespace TweenPlayables
 {
     [Serializable]
-    public class EaseParameter
+    public sealed class EaseParameter
     {
-        public Ease ease = Ease.Linear;
-        [NormalizedAnimationCurve] public AnimationCurve customEaseCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        [SerializeField] Ease ease = Ease.Linear;
+        [NormalizedAnimationCurve, SerializeField] AnimationCurve customEaseCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
         public EaseParameter() { }
         public EaseParameter(Ease ease)

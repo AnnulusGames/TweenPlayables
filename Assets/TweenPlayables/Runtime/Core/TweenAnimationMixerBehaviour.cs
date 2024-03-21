@@ -8,8 +8,8 @@ namespace TweenPlayables
         where TBinding : Component
         where TAnimationBehaviour : TweenAnimationBehaviour<TBinding>, new()
     {
-        private TBinding target;
-        private List<ScriptPlayable<TAnimationBehaviour>> playables = new List<ScriptPlayable<TAnimationBehaviour>>();
+        TBinding target;
+        readonly List<ScriptPlayable<TAnimationBehaviour>> playables = new();
 
         public override void OnPlayableDestroy(Playable playable)
         {

@@ -7,7 +7,7 @@ namespace TweenPlayables
     [Serializable]
     public abstract class TweenAnimationBehaviour<TBinding> : PlayableBehaviour where TBinding : Component
     {
-        private bool initialized;
+        bool initialized;
 
         public override void OnGraphStop(Playable playable)
         {
@@ -29,7 +29,7 @@ namespace TweenPlayables
         {
             if (playerData == null) return;
             if (initialized) return;
-            TBinding target = playerData as TBinding;
+            
             OnTweenInitialize(playerData);
             initialized = true;
         }

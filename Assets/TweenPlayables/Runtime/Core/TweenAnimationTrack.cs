@@ -1,8 +1,8 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif

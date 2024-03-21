@@ -4,5 +4,5 @@ using UnityEngine;
 namespace TweenPlayables
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-    public class NormalizedAnimationCurveAttribute : PropertyAttribute { }
+    public sealed class NormalizedAnimationCurveAttribute : PropertyAttribute { }
 }

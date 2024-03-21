@@ -9,7 +9,7 @@ namespace TweenPlayables
     public abstract class TweenAnimationClip<TAnimationBehaviour> : PlayableAsset, ITimelineClipAsset
         where TAnimationBehaviour : PlayableBehaviour, new()
     {
-        public TAnimationBehaviour behaviour = new TAnimationBehaviour();
+        [SerializeField] TAnimationBehaviour behaviour = new();
 
         public ClipCaps clipCaps
         {

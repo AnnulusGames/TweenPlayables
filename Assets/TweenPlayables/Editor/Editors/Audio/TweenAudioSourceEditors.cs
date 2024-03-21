@@ -5,23 +5,23 @@ using UnityEditor.Timeline;
 namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenAudioSourceTrack))]
-    public class TweenAudioSourceTrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenAudioSourceTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color trackColor => Styling.audioColor;
-        public override Texture2D trackIcon => Styling.audioSourceIcon;
-        public override string defaultTrackName => "Tween AudioSource Track";
+        public override Color TrackColor => Styling.audioColor;
+        public override Texture2D TrackIcon => Styling.audioSourceIcon;
+        public override string DefaultTrackName => "Tween AudioSource Track";
     }
 
     [CustomTimelineEditor(typeof(TweenAudioSourceClip))]
-    public class TweenAudioSourceClipEditor : TweenAnimationClipEditor
+    public sealed class TweenAudioSourceClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween AudioSource";
-        public override Color clipColor => Styling.audioColor;
-        public override Texture2D clipIcon => Styling.audioSourceIcon;
+        public override string DefaultClipName => "Tween AudioSource";
+        public override Color ClipColor => Styling.audioColor;
+        public override Texture2D ClipIcon => Styling.audioSourceIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenAudioSourceBehaviour))]
-    public class TweenAudioSourceBehaviourDrawer : PropertyDrawer
+    public sealed class TweenAudioSourceBehaviourDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

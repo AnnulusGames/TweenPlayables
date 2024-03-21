@@ -7,25 +7,25 @@ namespace TweenPlayables.Editor
 {
     [Obsolete]
     [CustomTimelineEditor(typeof(TweenTextMeshProUGUITrack))]
-    public class TweenTextMeshProUGUITrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenTextMeshProUGUITrackEditor : TweenAnimationTrackEditor
     {
-        public override Color trackColor => Styling.uguiColor;
-        public override Texture2D trackIcon => Styling.textMeshProUGUIIcon;
-        public override string defaultTrackName => "Tween TextMeshProUGUI Track";
+        public override Color TrackColor => Styling.uguiColor;
+        public override Texture2D TrackIcon => Styling.textMeshProUGUIIcon;
+        public override string DefaultTrackName => "Tween TextMeshProUGUI Track";
     }
 
     [Obsolete]
     [CustomTimelineEditor(typeof(TweenTextMeshProUGUIClip))]
-    public class TweenTextMeshProUGUIClipEditor : TweenAnimationClipEditor
+    public sealed class TweenTextMeshProUGUIClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween TextMeshProUGUI";
-        public override Color clipColor => Styling.uguiColor;
-        public override Texture2D clipIcon => Styling.textMeshProUGUIIcon;
+        public override string DefaultClipName => "Tween TextMeshProUGUI";
+        public override Color ClipColor => Styling.uguiColor;
+        public override Texture2D ClipIcon => Styling.textMeshProUGUIIcon;
     }
 
     [Obsolete]
     [CustomPropertyDrawer(typeof(TweenTextMeshProUGUIBehaviour))]
-    public class TweenTextMeshProUGUIBehaviourDrawer : PropertyDrawer
+    public sealed class TweenTextMeshProUGUIBehaviourDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

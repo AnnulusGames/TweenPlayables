@@ -5,23 +5,23 @@ using UnityEditor.Timeline;
 namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenSpriteRendererTrack))]
-    public class TweenSpriteRendererTrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenSpriteRendererTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color trackColor => Styling.rendererColor;
-        public override Texture2D trackIcon => Styling.spriteRendererIcon;
-        public override string defaultTrackName => "Tween SpriteRenderer Track";
+        public override Color TrackColor => Styling.rendererColor;
+        public override Texture2D TrackIcon => Styling.spriteRendererIcon;
+        public override string DefaultTrackName => "Tween SpriteRenderer Track";
     }
 
     [CustomTimelineEditor(typeof(TweenSpriteRendererClip))]
-    public class TweenSpriteRendererClipEditor : TweenAnimationClipEditor
+    public sealed class TweenSpriteRendererClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween SpriteRenderer";
-        public override Color clipColor => Styling.rendererColor;
-        public override Texture2D clipIcon => Styling.spriteRendererIcon;
+        public override string DefaultClipName => "Tween SpriteRenderer";
+        public override Color ClipColor => Styling.rendererColor;
+        public override Texture2D ClipIcon => Styling.spriteRendererIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenSpriteRendererBehaviour))]
-    public class TweenSpriteRendererBehaviourDrawer : PropertyDrawer
+    public sealed class TweenSpriteRendererBehaviourDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

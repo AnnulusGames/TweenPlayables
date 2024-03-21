@@ -5,23 +5,23 @@ using UnityEditor.Timeline;
 namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenCanvasGroupTrack))]
-    public class TweenCanvasGroupTrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenCanvasGroupTrackEditor : TweenAnimationTrackEditor
     {
-        public override string defaultTrackName => "Tween CanvasGroup Track";
-        public override Color trackColor => Styling.uguiColor;
-        public override Texture2D trackIcon => Styling.canvasGroupIcon;
+        public override string DefaultTrackName => "Tween CanvasGroup Track";
+        public override Color TrackColor => Styling.uguiColor;
+        public override Texture2D TrackIcon => Styling.canvasGroupIcon;
     }
 
     [CustomTimelineEditor(typeof(TweenCanvasGroupClip))]
-    public class TweenCanvasGroupClipEditor : TweenAnimationClipEditor
+    public sealed class TweenCanvasGroupClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween CanvasGroup";
-        public override Color clipColor => Styling.uguiColor;
-        public override Texture2D clipIcon => Styling.canvasGroupIcon;
+        public override string DefaultClipName => "Tween CanvasGroup";
+        public override Color ClipColor => Styling.uguiColor;
+        public override Texture2D ClipIcon => Styling.canvasGroupIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenCanvasGroupBehaviour))]
-    public class TweenCanvasGroupBehaviourDrawer : PropertyDrawer
+    public sealed class TweenCanvasGroupBehaviourDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

@@ -1,29 +1,27 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
-using UnityEditor.Playables;
-using UnityEngine.Timeline;
 
 namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenTransformTrack))]
-    public class TweenTransformTrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenTransformTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color trackColor => Styling.transformColor;
-        public override Texture2D trackIcon => Styling.transformIcon;
-        public override string defaultTrackName => "Tween Transform Track";
+        public override Color TrackColor => Styling.transformColor;
+        public override Texture2D TrackIcon => Styling.transformIcon;
+        public override string DefaultTrackName => "Tween Transform Track";
     }
 
     [CustomTimelineEditor(typeof(TweenTransformClip))]
-    public class TweenTransformClipEditor : TweenAnimationClipEditor
+    public sealed class TweenTransformClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween Transform";
-        public override Color clipColor => Styling.transformColor;
-        public override Texture2D clipIcon => Styling.transformIcon;
+        public override string DefaultClipName => "Tween Transform";
+        public override Color ClipColor => Styling.transformColor;
+        public override Texture2D ClipIcon => Styling.transformIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenTransformBehaviour))]
-    public class TweenTransformBehaviourDrawer : PropertyDrawer
+    public sealed class TweenTransformBehaviourDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(Outline))]
     [TrackClipType(typeof(TweenOutlineClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween Outline Track")]
+    [DisplayName("Tween Playables/UI/Outline")]
 #endif
     public sealed class TweenOutlineTrack : TweenAnimationTrack<Outline, TweenOutlineMixerBehaviour, TweenOutlineBehaviour> { }
 }

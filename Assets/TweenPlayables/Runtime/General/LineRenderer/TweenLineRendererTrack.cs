@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(LineRenderer))]
     [TrackClipType(typeof(TweenLineRendererClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/General/Tween LineRenderer Track")]
+    [DisplayName("Tween Playables/General/Line Renderer")]
 #endif
     public sealed class TweenLineRendererTrack : TweenAnimationTrack<LineRenderer, TweenLineRendererMixerBehaviour, TweenLineRendererBehaviour> { }
 }

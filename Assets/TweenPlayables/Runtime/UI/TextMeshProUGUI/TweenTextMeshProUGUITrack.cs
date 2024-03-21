@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(TextMeshProUGUI))]
     [TrackClipType(typeof(TweenTextMeshProUGUIClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween TextMeshProUGUI Track")]
+    [DisplayName("Tween Playables/UI/TextMeshPro UGUI")]
 #endif
     public sealed class TweenTextMeshProUGUITrack : TweenAnimationTrack<TextMeshProUGUI, TweenTextMeshProUGUIMixerBehaviour, TweenTextMeshProUGUIBehaviour> { }
 }

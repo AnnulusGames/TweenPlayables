@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(RectTransform))]
     [TrackClipType(typeof(TweenRectTransformClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween RectTransform Track")]
+    [DisplayName("Tween Playables/UI/Rect Transform")]
 #endif
     public sealed class TweenRectTransformTrack : TweenAnimationTrack<RectTransform, TweenRectTransformMixerBehaviour, TweenRectTransformBehaviour> { }
 }

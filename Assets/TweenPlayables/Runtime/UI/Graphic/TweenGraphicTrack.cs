@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(Graphic))]
     [TrackClipType(typeof(TweenGraphicClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween Graphic Track")]
+    [DisplayName("Tween Playables/UI/Graphic")]
 #endif
     public sealed class TweenGraphicTrack : TweenAnimationTrack<Graphic, TweenGraphicMixerBehaviour, TweenGraphicBehaviour> { }
 }

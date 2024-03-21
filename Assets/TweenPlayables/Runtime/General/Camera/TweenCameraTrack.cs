@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(Camera))]
     [TrackClipType(typeof(TweenCameraClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/General/Tween Camera Track")]
+    [DisplayName("Tween Playables/General/Camera")]
 #endif
     public sealed class TweenCameraTrack : TweenAnimationTrack<Camera, TweenCameraMixerBehaviour, TweenCameraBehaviour> { }
 }

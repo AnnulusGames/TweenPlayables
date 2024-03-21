@@ -8,7 +8,7 @@ namespace TweenPlayables
 
         public override void Blend(Slider binding, TweenSliderBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.value.active)
+            if (behaviour.value.IsActive)
             {
                 valueMixer.Blend(behaviour.value.Evaluate(binding, progress), weight);
             }

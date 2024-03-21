@@ -9,11 +9,11 @@ namespace TweenPlayables
 
         public override void Blend(Shadow binding, TweenShadowBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.distance.active)
+            if (behaviour.distance.IsActive)
             {
                 distanceMixer.Blend(behaviour.distance.Evaluate(binding, progress), weight);
             }

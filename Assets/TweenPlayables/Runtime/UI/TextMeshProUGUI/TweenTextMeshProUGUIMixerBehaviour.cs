@@ -15,35 +15,35 @@ namespace TweenPlayables
 
         public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.fontSize.active)
+            if (behaviour.fontSize.IsActive)
             {
                 fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
             }
-            if (behaviour.characterSpacing.active)
+            if (behaviour.characterSpacing.IsActive)
             {
                 characterSpacingMixer.Blend(behaviour.characterSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.wordSpacing.active)
+            if (behaviour.wordSpacing.IsActive)
             {
                 wordSpacingMixer.Blend(behaviour.wordSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.lineSpacing.active)
+            if (behaviour.lineSpacing.IsActive)
             {
                 lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.paragraphSpacing.active)
+            if (behaviour.paragraphSpacing.IsActive)
             {
                 paragraphSpacingMixer.Blend(behaviour.paragraphSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.colorGradient.active)
+            if (behaviour.colorGradient.IsActive)
             {
                 colorGradientMixer.Blend(behaviour.colorGradient.Evaluate(binding, progress), weight);
             }
-            if (behaviour.text.active)
+            if (behaviour.text.IsActive)
             {
                 textValue = behaviour.text.Evaluate(binding, progress);
             }

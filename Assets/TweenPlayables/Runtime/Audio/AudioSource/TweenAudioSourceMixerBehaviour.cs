@@ -9,12 +9,12 @@ namespace TweenPlayables
 
         public override void Blend(AudioSource binding, TweenAudioSourceBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.volume.active)
+            if (behaviour.volume.IsActive)
             {
                 volumeMixer.Blend(behaviour.volume.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.pitch.active)
+            if (behaviour.pitch.IsActive)
             {
                 pitchMixer.Blend(behaviour.pitch.Evaluate(binding, progress), weight);
             }

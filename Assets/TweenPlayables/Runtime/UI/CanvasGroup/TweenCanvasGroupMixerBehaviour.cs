@@ -8,7 +8,7 @@ namespace TweenPlayables
 
         public override void Blend(CanvasGroup binding, TweenCanvasGroupBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.alpha.active)
+            if (behaviour.alpha.IsActive)
             {
                 alphaMixer.Blend(behaviour.alpha.Evaluate(binding, progress), weight);
             }

@@ -8,7 +8,7 @@ namespace TweenPlayables
 
         public override void Blend(Graphic binding, TweenGraphicBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }

@@ -11,19 +11,19 @@ namespace TweenPlayables
 
         public override void Blend(Text binding, TweenTextBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.fontSize.active)
+            if (behaviour.fontSize.IsActive)
             {
                 fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
             }
-            if (behaviour.lineSpacing.active)
+            if (behaviour.lineSpacing.IsActive)
             {
                 lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.text.active)
+            if (behaviour.text.IsActive)
             {
                 textValue = behaviour.text.Evaluate(binding, progress);
             }

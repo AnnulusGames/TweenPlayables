@@ -10,17 +10,17 @@ namespace TweenPlayables
 
         public override void Blend(Camera binding, TweenCameraBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.orthographicSize.active)
+            if (behaviour.orthographicSize.IsActive)
             {
                 orthoSizeMixer.Blend(behaviour.orthographicSize.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.fieldOfView.active)
+            if (behaviour.fieldOfView.IsActive)
             {
                 fovMixer.Blend(behaviour.fieldOfView.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.backgroundColor.active)
+            if (behaviour.backgroundColor.IsActive)
             {
                 backgroundColorMixer.Blend(behaviour.backgroundColor.Evaluate(binding, progress), weight);
             }

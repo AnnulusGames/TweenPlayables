@@ -39,15 +39,15 @@ namespace TweenPlayables
 
         public override void Blend(Renderer binding, TweenRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.textureOffset.active)
+            if (behaviour.textureOffset.IsActive)
             {
                 textureOffsetMixer.Blend(behaviour.textureOffset.Evaluate(binding, progress), weight);
             }
-            if (behaviour.textureScale.active)
+            if (behaviour.textureScale.IsActive)
             {
                 textureScaleMixer.Blend(behaviour.textureScale.Evaluate(binding, progress), weight);
             }

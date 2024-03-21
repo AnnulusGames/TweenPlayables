@@ -10,17 +10,17 @@ namespace TweenPlayables
 
         public override void Blend(Transform binding, TweenTransformBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.position.active)
+            if (behaviour.position.IsActive)
             {
                 positionMixer.Blend(behaviour.position.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.rotation.active)
+            if (behaviour.rotation.IsActive)
             {
                 rotationMixer.Blend(behaviour.rotation.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.scale.active)
+            if (behaviour.scale.IsActive)
             {
                 scaleMixer.Blend(behaviour.scale.Evaluate(binding, progress), weight);
             }

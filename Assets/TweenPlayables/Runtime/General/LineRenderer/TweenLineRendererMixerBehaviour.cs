@@ -16,22 +16,22 @@ namespace TweenPlayables
 
         public override void Blend(LineRenderer binding, TweenLineRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.startColor.active)
+            if (behaviour.startColor.IsActive)
             {
                 blendedStartColor += behaviour.startColor.Evaluate(binding, progress) * weight;
                 startColorInputCount++;
             }
-            if (behaviour.endColor.active)
+            if (behaviour.endColor.IsActive)
             {
                 blendedEndColor += behaviour.endColor.Evaluate(binding, progress) * weight;
                 endColorInputCount++;
             }
-            if (behaviour.startWidth.active)
+            if (behaviour.startWidth.IsActive)
             {
                 blendedStartWidth += behaviour.startWidth.Evaluate(binding, progress) * weight;
                 startWidthInputCount++;
             }
-            if (behaviour.endWidth.active)
+            if (behaviour.endWidth.IsActive)
             {
                 blendedEndWidth += behaviour.endWidth.Evaluate(binding, progress) * weight;
                 endWidthInputCount++;

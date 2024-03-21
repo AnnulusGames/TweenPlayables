@@ -9,11 +9,11 @@ namespace TweenPlayables
 
         public override void Blend(Image binding, TweenImageBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.fillAmount.active)
+            if (behaviour.fillAmount.IsActive)
             {
                 fillAmountMixer.Blend(behaviour.fillAmount.Evaluate(binding, progress), weight);
             }

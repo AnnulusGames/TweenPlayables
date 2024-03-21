@@ -15,17 +15,17 @@ namespace TweenPlayables
 
         public override void Blend(Light binding, TweenLightBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            if (behaviour.color.IsActive)
             {
                 blendedColor += behaviour.color.Evaluate(binding, progress) * weight;
                 colorInputCount++;
             }
-            if (behaviour.intensity.active)
+            if (behaviour.intensity.IsActive)
             {
                 blendedIntensity += behaviour.intensity.Evaluate(binding, progress) * weight;
                 intensityInputCount++;
             }
-            if (behaviour.shadowStrength.active)
+            if (behaviour.shadowStrength.IsActive)
             {
                 blendedShadowStrength += behaviour.shadowStrength.Evaluate(binding, progress) * weight;
                 shadowStrengthInputCount++;

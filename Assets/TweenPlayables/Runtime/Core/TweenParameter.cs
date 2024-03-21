@@ -21,13 +21,13 @@ namespace TweenPlayables
             this.endValue = endValue;
         }
 
-        [SerializeField] bool isActive;
+        [SerializeField] bool active;
         [SerializeField] T startValue;
         [SerializeField] T endValue;
         [SerializeField] EaseParameter ease;
         [SerializeField] bool relative;
 
-        public override bool IsActive => isActive;
+        public override bool IsActive => active;
         public T StartValue => startValue;
         public T EndValue => endValue;
         public EaseParameter EaseParameter => ease;

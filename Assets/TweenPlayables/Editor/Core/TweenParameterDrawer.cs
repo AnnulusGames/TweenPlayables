@@ -17,7 +17,7 @@ namespace TweenPlayables.Editor
 
             position.xMin += 15f * indent;
 
-            SerializedProperty activeProperty = property.FindPropertyRelative("isActive");
+            SerializedProperty activeProperty = property.FindPropertyRelative("active");
             float height = GetPropertyHeight(property, label);
 
             Rect boxRect = position;

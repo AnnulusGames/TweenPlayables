@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class NormalizedAnimationCurveAttribute : PropertyAttribute { }

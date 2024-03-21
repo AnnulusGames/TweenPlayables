@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     public abstract class TweenAnimationMixerBehaviour<TBinding, TAnimationBehaviour> : PlayableBehaviour
         where TBinding : Component

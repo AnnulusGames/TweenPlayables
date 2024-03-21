@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Playables;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
     public abstract class TweenAnimationBehaviour<TBinding> : PlayableBehaviour where TBinding : Component
@@ -24,7 +24,7 @@ namespace AnnulusGames.TweenPlayables
                 OnTweenFinished();
             }
         }
-        
+
         internal void Initialize(TBinding playerData)
         {
             if (playerData == null) return;

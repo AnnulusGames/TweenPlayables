@@ -4,7 +4,7 @@ using UnityEditor.Timeline;
 using UnityEditor.Playables;
 using UnityEngine.Timeline;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenTransformTrack))]
     public class TweenTransformTrackEditor : TweenAnimationTrackEditor

@@ -1,6 +1,6 @@
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     public class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
     {

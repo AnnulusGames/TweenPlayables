@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
     public class TweenLightBehaviour : TweenAnimationBehaviour<Light>

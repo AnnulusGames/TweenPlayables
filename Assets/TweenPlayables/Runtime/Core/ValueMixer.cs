@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     public abstract class ValueMixer<T>
     {

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEditor;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     [CustomPropertyDrawer(typeof(TweenParameter<>), true)]
     public class TweenParamterDrawer : PropertyDrawer
@@ -84,7 +84,7 @@ namespace AnnulusGames.TweenPlayables.Editor
 
             if (scrambleModeProeprty.enumValueIndex == (int)ScrambleMode.Custom)
             {
-                GUIHelper.Field(ref position,property.FindPropertyRelative("customScrambleChars"), "Custom Scramble Chars");
+                GUIHelper.Field(ref position, property.FindPropertyRelative("customScrambleChars"), "Custom Scramble Chars");
             }
         }
 

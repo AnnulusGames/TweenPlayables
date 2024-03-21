@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.Timeline;
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenTextMeshProUGUITrack))]
     public class TweenTextMeshProUGUITrackEditor : TweenAnimationTrackEditor

@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine.Timeline;
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [TrackBindingType(typeof(TextMeshProUGUI))]
     [TrackClipType(typeof(TweenTextMeshProUGUIClip))]

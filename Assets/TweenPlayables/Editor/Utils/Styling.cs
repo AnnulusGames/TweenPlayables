@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     public static class Styling
     {

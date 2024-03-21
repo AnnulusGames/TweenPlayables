@@ -5,7 +5,7 @@ using UnityEngine.Timeline;
 using UnityEditor;
 using UnityEditor.Timeline;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     public abstract class TweenAnimationTrackEditor : TrackEditor
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     public abstract class TweenParameter<T>
     {
@@ -57,7 +57,7 @@ namespace AnnulusGames.TweenPlayables
     {
         public override Vector2 GetRelativeValue(object key, Vector2 value)
         {
-            return GetInitialValue(key)  + value;
+            return GetInitialValue(key) + value;
         }
 
         public override Vector2 Evaluate(object key, float t)

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.UI;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
     public class TweenOutlineBehaviour : TweenAnimationBehaviour<Outline>

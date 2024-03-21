@@ -7,7 +7,7 @@ using UnityEngine.Playables;
 using UnityEditor;
 #endif
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
     public abstract class TweenAnimationTrack<TBinding, TMixerBehaviour, TAnimationBehaviour> : TrackAsset

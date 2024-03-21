@@ -4,7 +4,7 @@ using System.ComponentModel;
 using UnityEngine.UI;
 using UnityEngine.Timeline;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [TrackBindingType(typeof(Outline))]
     [TrackClipType(typeof(TweenOutlineClip))]

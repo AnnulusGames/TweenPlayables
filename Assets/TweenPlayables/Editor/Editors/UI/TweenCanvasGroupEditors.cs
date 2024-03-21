@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenCanvasGroupTrack))]
     public class TweenCanvasGroupTrackEditor : TweenAnimationTrackEditor

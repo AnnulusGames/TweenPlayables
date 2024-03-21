@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(AudioSource))]
     [TrackClipType(typeof(TweenAudioSourceClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/Audio/Tween AudioSource Track")]
+    [DisplayName("Tween Playables/Audio/Audio Source")]
 #endif
     public sealed class TweenAudioSourceTrack : TweenAnimationTrack<AudioSource, TweenAudioSourceMixerBehaviour, TweenAudioSourceBehaviour> { }
 }

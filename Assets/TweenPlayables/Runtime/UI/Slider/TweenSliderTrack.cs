@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(Slider))]
     [TrackClipType(typeof(TweenSliderClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween Slider Track")]
+    [DisplayName("Tween Playables/UI/Slider")]
 #endif
     public sealed class TweenSliderTrack : TweenAnimationTrack<Slider, TweenSliderMixerBehaviour, TweenSliderBehaviour> { }
 }

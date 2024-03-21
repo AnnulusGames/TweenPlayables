@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(Shadow))]
     [TrackClipType(typeof(TweenShadowClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween Shadow Track")]
+    [DisplayName("Tween Playables/UI/Shadow")]
 #endif
     public sealed class TweenShadowTrack : TweenAnimationTrack<Shadow, TweenShadowMixerBehaviour, TweenShadowBehaviour> { }
 }

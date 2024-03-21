@@ -9,7 +9,7 @@ namespace TweenPlayables
     [TrackBindingType(typeof(CanvasGroup))]
     [TrackClipType(typeof(TweenCanvasGroupClip))]
 #if UNITY_EDITOR
-    [DisplayName("Tween Playables/UI/Tween CanvasGroup Track")]
+    [DisplayName("Tween Playables/UI/Canvas Group")]
 #endif
     public sealed class TweenCanvasGroupTrack : TweenAnimationTrack<CanvasGroup, TweenCanvasGroupMixerBehaviour, TweenCanvasGroupBehaviour> { }
 }

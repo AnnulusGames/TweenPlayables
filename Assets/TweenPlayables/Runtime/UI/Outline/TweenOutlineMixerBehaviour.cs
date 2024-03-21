@@ -21,11 +21,11 @@ namespace TweenPlayables
 
         public override void Apply(Outline binding)
         {
-            if (colorMixer.ValueCount > 0)
+            if (colorMixer.HasValue)
             {
                 binding.effectColor = colorMixer.Value;
             }
-            if (distanceMixer.ValueCount > 0)
+            if (distanceMixer.HasValue)
             {
                 binding.effectDistance = distanceMixer.Value;
             }

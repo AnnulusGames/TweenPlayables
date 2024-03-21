@@ -51,31 +51,31 @@ namespace TweenPlayables
 
         public override void Apply(TextMeshProUGUI binding)
         {
-            if (colorMixer.ValueCount > 0)
+            if (colorMixer.HasValue)
             {
                 binding.color = colorMixer.Value;
             }
-            if (fontSizeMixer.ValueCount > 0)
+            if (fontSizeMixer.HasValue)
             {
                 binding.fontSize = fontSizeMixer.Value;
             }
-            if (characterSpacingMixer.ValueCount > 0)
+            if (characterSpacingMixer.HasValue)
             {
                 binding.characterSpacing = characterSpacingMixer.Value;
             }
-            if (wordSpacingMixer.ValueCount > 0)
+            if (wordSpacingMixer.HasValue)
             {
                 binding.wordSpacing = wordSpacingMixer.Value;
             }
-            if (lineSpacingMixer.ValueCount > 0)
+            if (lineSpacingMixer.HasValue)
             {
                 binding.lineSpacing = lineSpacingMixer.Value;
             }
-            if (paragraphSpacingMixer.ValueCount > 0)
+            if (paragraphSpacingMixer.HasValue)
             {
                 binding.paragraphSpacing = paragraphSpacingMixer.Value;
             }
-            if (colorGradientMixer.ValueCount > 0)
+            if (colorGradientMixer.HasValue)
             {
                 binding.colorGradient = colorGradientMixer.Value;
             }

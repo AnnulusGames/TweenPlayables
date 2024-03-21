@@ -6,18 +6,19 @@ namespace TweenPlayables
     public abstract class ValueMixer<T>
     {
         public T Value { get; protected set; }
-        public int ValueCount { get; protected set; }
+        public bool HasValue => count > 0;
+        int count;
 
         public void Blend(T value, float weight)
         {
             BlendCore(value, weight);
-            ValueCount++;
+            count++;
         }
 
         public virtual void Clear()
         {
             Value = default;
-            ValueCount = 0;
+            count = 0;
         }
 
         protected abstract void BlendCore(T value, float weight);

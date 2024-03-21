@@ -55,15 +55,15 @@ namespace TweenPlayables
 
         public override void Apply(Renderer binding)
         {
-            if (colorMixer.ValueCount > 0)
+            if (colorMixer.HasValue)
             {
                 materialDictionary[binding].color = colorMixer.Value;
             }
-            if (textureOffsetMixer.ValueCount > 0)
+            if (textureOffsetMixer.HasValue)
             {
                 materialDictionary[binding].mainTextureOffset = textureOffsetMixer.Value;
             }
-            if (textureScaleMixer.ValueCount > 0)
+            if (textureScaleMixer.HasValue)
             {
                 materialDictionary[binding].mainTextureScale = textureScaleMixer.Value;
             }

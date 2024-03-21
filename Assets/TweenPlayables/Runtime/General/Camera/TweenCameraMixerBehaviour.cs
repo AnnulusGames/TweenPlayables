@@ -28,15 +28,15 @@ namespace TweenPlayables
 
         public override void Apply(Camera binding)
         {
-            if (orthoSizeMixer.ValueCount > 0)
+            if (orthoSizeMixer.HasValue)
             {
                 binding.orthographicSize = orthoSizeMixer.Value;
             }
-            if (fovMixer.ValueCount > 0)
+            if (fovMixer.HasValue)
             {
                 binding.fieldOfView = fovMixer.Value;
             }
-            if (backgroundColorMixer.ValueCount > 0)
+            if (backgroundColorMixer.HasValue)
             {
                 binding.backgroundColor = backgroundColorMixer.Value;
             }

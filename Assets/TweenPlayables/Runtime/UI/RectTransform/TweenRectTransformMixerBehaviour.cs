@@ -31,19 +31,19 @@ namespace TweenPlayables
 
         public override void Apply(RectTransform binding)
         {
-            if (anchoredPositionMixer.ValueCount > 0)
+            if (anchoredPositionMixer.HasValue)
             {
                 binding.anchoredPosition3D = anchoredPositionMixer.Value;
             }
-            if (sizeDeltaMixer.ValueCount > 0)
+            if (sizeDeltaMixer.HasValue)
             {
                 binding.sizeDelta = sizeDeltaMixer.Value;
             }
-            if (rotationMixer.ValueCount > 0)
+            if (rotationMixer.HasValue)
             {
                 binding.localEulerAngles = rotationMixer.Value;
             }
-            if (scaleMixer.ValueCount > 0)
+            if (scaleMixer.HasValue)
             {
                 binding.localScale = scaleMixer.Value;
             }

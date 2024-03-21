@@ -28,15 +28,15 @@ namespace TweenPlayables
 
         public override void Apply(Transform binding)
         {
-            if (positionMixer.ValueCount > 0)
+            if (positionMixer.HasValue)
             {
                 binding.localPosition = positionMixer.Value;
             }
-            if (rotationMixer.ValueCount > 0)
+            if (rotationMixer.HasValue)
             {
                 binding.localEulerAngles = rotationMixer.Value;
             }
-            if (scaleMixer.ValueCount > 0)
+            if (scaleMixer.HasValue)
             {
                 binding.localScale = scaleMixer.Value;
             }

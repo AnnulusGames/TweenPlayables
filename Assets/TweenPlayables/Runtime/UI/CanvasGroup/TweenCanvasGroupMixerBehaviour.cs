@@ -16,7 +16,7 @@ namespace TweenPlayables
 
         public override void Apply(CanvasGroup binding)
         {
-            if (alphaMixer.ValueCount > 0)
+            if (alphaMixer.HasValue)
             {
                 binding.alpha = alphaMixer.Value;
             }

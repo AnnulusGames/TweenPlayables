@@ -31,15 +31,15 @@ namespace TweenPlayables
 
         public override void Apply(Text binding)
         {
-            if (colorMixer.ValueCount > 0)
+            if (colorMixer.HasValue)
             {
                 binding.color = colorMixer.Value;
             }
-            if (fontSizeMixer.ValueCount > 0)
+            if (fontSizeMixer.HasValue)
             {
                 binding.fontSize = fontSizeMixer.Value;
             }
-            if (lineSpacingMixer.ValueCount > 0)
+            if (lineSpacingMixer.HasValue)
             {
                 binding.lineSpacing = lineSpacingMixer.Value;
             }

@@ -16,7 +16,7 @@ namespace TweenPlayables
 
         public override void Apply(Graphic binding)
         {
-            if (colorMixer.ValueCount > 0)
+            if (colorMixer.HasValue)
             {
                 binding.color = colorMixer.Value;
             }

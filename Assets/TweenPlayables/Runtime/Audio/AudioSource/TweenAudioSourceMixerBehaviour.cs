@@ -22,11 +22,11 @@ namespace TweenPlayables
 
         public override void Apply(AudioSource binding)
         {
-            if (volumeMixer.ValueCount > 0)
+            if (volumeMixer.HasValue)
             {
                 binding.volume = volumeMixer.Value;
             }
-            if (pitchMixer.ValueCount > 0)
+            if (pitchMixer.HasValue)
             {
                 binding.pitch = pitchMixer.Value;
             }

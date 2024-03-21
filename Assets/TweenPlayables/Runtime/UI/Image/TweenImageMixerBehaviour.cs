@@ -21,11 +21,11 @@ namespace TweenPlayables
 
         public override void Apply(Image binding)
         {
-            if (colorMixer.ValueCount > 0)
+            if (colorMixer.HasValue)
             {
                 binding.color = colorMixer.Value;
             }
-            if (fillAmountMixer.ValueCount > 0)
+            if (fillAmountMixer.HasValue)
             {
                 binding.fillAmount = fillAmountMixer.Value;
             }

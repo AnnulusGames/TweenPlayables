@@ -16,7 +16,7 @@ namespace TweenPlayables
 
         public override void Apply(Slider binding)
         {
-            if (valueMixer.ValueCount > 0)
+            if (valueMixer.HasValue)
             {
                 binding.value = valueMixer.Value;
             }

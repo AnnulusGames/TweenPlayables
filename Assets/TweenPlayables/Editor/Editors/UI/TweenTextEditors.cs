@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -21,29 +22,13 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(TweenTextBehaviour))]
-    public sealed class TweenTextBehaviourDrawer : PropertyDrawer
+    public sealed class TweenTextBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("color"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("fontSize"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("lineSpacing"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("text"));
-        }
+            "color", "fontSize", "lineSpacing", "text"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 15f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("color"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("fontSize"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("lineSpacing"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("text"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

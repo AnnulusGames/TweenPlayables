@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -21,26 +22,13 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(TweenTransformBehaviour))]
-    public sealed class TweenTransformBehaviourDrawer : PropertyDrawer
+    public sealed class TweenTransformBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("position"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("rotation"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("scale"));
-        }
+            "position", "rotation", "scale"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 11f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("position"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("rotation"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("scale"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

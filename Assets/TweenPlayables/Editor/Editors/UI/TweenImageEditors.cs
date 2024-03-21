@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -21,23 +22,13 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(TweenImageBehaviour))]
-    public sealed class TweenImageBehaviourDrawer : PropertyDrawer
+    public sealed class TweenImageBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("color"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("fillAmount"));
-        }
+            "color", "fillAmount"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 7f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("color"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("fillAmount"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

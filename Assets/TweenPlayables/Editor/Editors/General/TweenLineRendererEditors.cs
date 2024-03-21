@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -21,29 +22,13 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(TweenLineRendererBehaviour))]
-    public sealed class TweenLineRendererBehaviourDrawer : PropertyDrawer
+    public sealed class TweenLineRendererBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("startColor"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("endColor"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("startWidth"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("endWidth"));
-        }
+            "startColor", "endColor", "startWidth", "endWidth"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 13f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("startColor"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("endColor"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("startWidth"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("endWidth"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

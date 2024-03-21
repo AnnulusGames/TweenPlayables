@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
+using System.Collections.Generic;
 
 namespace TweenPlayables.Editor
 {
@@ -21,20 +22,13 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(TweenCanvasGroupBehaviour))]
-    public sealed class TweenCanvasGroupBehaviourDrawer : PropertyDrawer
+    public sealed class TweenCanvasGroupBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("alpha"));
-        }
+            "alpha"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 7f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("alpha"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

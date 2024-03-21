@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -21,23 +22,13 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(TweenAudioSourceBehaviour))]
-    public sealed class TweenAudioSourceBehaviourDrawer : PropertyDrawer
+    public sealed class TweenAudioSourceBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("volume"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("pitch"));
-        }
+            "volume", "pitch"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 9f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("volume"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("pitch"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

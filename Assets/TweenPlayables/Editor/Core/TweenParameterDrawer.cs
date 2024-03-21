@@ -6,7 +6,7 @@ using UnityEditor;
 namespace TweenPlayables.Editor
 {
     [CustomPropertyDrawer(typeof(TweenParameter<>), true)]
-    public abstract class TweenParamterDrawer : PropertyDrawer
+    public class TweenParamterDrawer : PropertyDrawer
     {
         protected static readonly float headerHeight = EditorGUIUtility.singleLineHeight * 1.2f;
 

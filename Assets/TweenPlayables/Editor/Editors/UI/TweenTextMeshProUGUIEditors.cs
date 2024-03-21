@@ -5,24 +5,24 @@ using TMPro;
 
 namespace TweenPlayables.Editor
 {
-    [CustomTimelineEditor(typeof(TweenTMPTextTrack))]
-    public class TweenTMPTextTrackEditor : TweenAnimationTrackEditor
+    [CustomTimelineEditor(typeof(TweenTextMeshProUGUITrack))]
+    public class TweenTextMeshProUGUITrackEditor : TweenAnimationTrackEditor
     {
         public override Color trackColor => Styling.uguiColor;
         public override Texture2D trackIcon => Styling.textMeshProUGUIIcon;
-        public override string defaultTrackName => "Tween TMP_Text Track";
+        public override string defaultTrackName => "Tween TextMeshProUGUI Track";
     }
 
-    [CustomTimelineEditor(typeof(TweenTMPTextClip))]
-    public class TweenTMPTextClipEditor : TweenAnimationClipEditor
+    [CustomTimelineEditor(typeof(TweenTextMeshProUGUIClip))]
+    public class TweenTextMeshProUGUIClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween TMP_Text";
+        public override string defaultClipName => "Tween TextMeshProUGUI";
         public override Color clipColor => Styling.uguiColor;
         public override Texture2D clipIcon => Styling.textMeshProUGUIIcon;
     }
 
-    [CustomPropertyDrawer(typeof(TweenTMPTextBehaviour))]
-    public class TweenTMPTextBehaviourDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(TweenTextMeshProUGUIBehaviour))]
+    public class TweenTextMeshProUGUIBehaviourDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

@@ -5,7 +5,7 @@ using TMPro;
 namespace TweenPlayables
 {
     [Serializable]
-    public sealed class TweenTMPTextBehaviour : TweenAnimationBehaviour<TMP_Text>
+    public sealed class TweenTextMeshProUGUIBehaviour : TweenAnimationBehaviour<TextMeshProUGUI>
     {
         [SerializeField] ColorTweenParameter color;
         [SerializeField] FloatTweenParameter fontSize;
@@ -25,7 +25,7 @@ namespace TweenPlayables
         public ReadOnlyTweenParameter<VertexGradient> ColorGradient => colorGradient;
         public ReadOnlyTweenParameter<string> Text => text;
 
-        public override void OnTweenInitialize(TMP_Text playerData)
+        public override void OnTweenInitialize(TextMeshProUGUI playerData)
         {
             color.SetInitialValue(playerData, playerData.color);
             fontSize.SetInitialValue(playerData, playerData.fontSize);

@@ -1,59 +1,25 @@
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
-    public class TweenLightMixerBehaviour : TweenAnimationMixerBehaviour<Light, TweenLightBehaviour>
+    public sealed class TweenLightMixerBehaviour : TweenAnimationMixerBehaviour<Light, TweenLightBehaviour>
     {
-        private Color blendedColor;
-        private int colorInputCount;
-
-        private float blendedIntensity;
-        private int intensityInputCount;
-
-        private float blendedShadowStrength;
-        private int shadowStrengthInputCount;
+        readonly ColorValueMixer colorMixer = new();
+        readonly FloatValueMixer intensityMixer = new();
+        readonly FloatValueMixer shadowStrengthMixer = new();
 
         public override void Blend(Light binding, TweenLightBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
-            {
-                blendedColor += behaviour.color.Evaluate(binding, progress) * weight;
-                colorInputCount++;
-            }
-            if (behaviour.intensity.active)
-            {
-                blendedIntensity += behaviour.intensity.Evaluate(binding, progress) * weight;
-                intensityInputCount++;
-            }
-            if (behaviour.shadowStrength.active)
-            {
-                blendedShadowStrength += behaviour.shadowStrength.Evaluate(binding, progress) * weight;
-                shadowStrengthInputCount++;
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            intensityMixer.TryBlend(behaviour.Intensity, binding, progress, weight);
+            shadowStrengthMixer.TryBlend(behaviour.ShadowStrength, binding, progress, weight);
         }
 
         public override void Apply(Light binding)
         {
-            if (colorInputCount > 0)
-            {
-                binding.color = blendedColor;
-            }
-            if (intensityInputCount > 0)
-            {
-                binding.intensity = blendedIntensity;
-            }
-            if (shadowStrengthInputCount > 0)
-            {
-                binding.shadowStrength = blendedShadowStrength;
-            }
-
-            blendedColor = Color.clear;
-            colorInputCount = 0;
-            blendedIntensity = 0f;
-            intensityInputCount = 0;
-            blendedShadowStrength = 0f;
-            shadowStrengthInputCount = 0;
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
+            intensityMixer.TryApplyAndClear(binding, (x, binding) => binding.intensity = x);
+            shadowStrengthMixer.TryApplyAndClear(binding, (x, binding) => binding.shadowStrength = x);
         }
     }
-
 }

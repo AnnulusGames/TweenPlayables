@@ -1,15 +1,20 @@
 using System;
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
-    public class TweenRectTransformBehaviour : TweenAnimationBehaviour<RectTransform>
+    public sealed class TweenRectTransformBehaviour : TweenAnimationBehaviour<RectTransform>
     {
-        public Vector3TweenParameter anchoredPosition;
-        public Vector2TweenParameter sizeDelta;
-        public Vector3TweenParameter rotation;
-        public Vector3TweenParameter scale;
+        [SerializeField] Vector3TweenParameter anchoredPosition;
+        [SerializeField] Vector2TweenParameter sizeDelta;
+        [SerializeField] Vector3TweenParameter rotation;
+        [SerializeField] Vector3TweenParameter scale;
+
+        public ReadOnlyTweenParameter<Vector3> AnchoredPosition => anchoredPosition;
+        public ReadOnlyTweenParameter<Vector2> SizeDelta => sizeDelta;
+        public ReadOnlyTweenParameter<Vector3> Rotation => rotation;
+        public ReadOnlyTweenParameter<Vector3> Scale => scale;
 
         public override void OnTweenInitialize(RectTransform playerData)
         {
@@ -19,5 +24,4 @@ namespace AnnulusGames.TweenPlayables
             scale.SetInitialValue(playerData, playerData.localScale);
         }
     }
-
 }

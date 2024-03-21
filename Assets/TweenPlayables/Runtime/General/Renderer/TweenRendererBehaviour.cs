@@ -1,14 +1,18 @@
 using System;
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
-    public class TweenRendererBehaviour : TweenAnimationBehaviour<Renderer>
+    public sealed class TweenRendererBehaviour : TweenAnimationBehaviour<Renderer>
     {
-        public ColorTweenParameter color;
-        public Vector2TweenParameter textureOffset;
-        public Vector2TweenParameter textureScale;
+        [SerializeField] ColorTweenParameter color;
+        [SerializeField] Vector2TweenParameter textureOffset;
+        [SerializeField] Vector2TweenParameter textureScale;
+
+        public ReadOnlyTweenParameter<Color> Color => color;
+        public ReadOnlyTweenParameter<Vector2> TextureOffset => textureOffset;
+        public ReadOnlyTweenParameter<Vector2> TextureScale => textureScale;
 
         public override void OnTweenInitialize(Renderer playerData)
         {
@@ -17,5 +21,4 @@ namespace AnnulusGames.TweenPlayables
             textureScale.SetInitialValue(playerData, playerData.sharedMaterial.mainTextureScale);
         }
     }
-
 }

@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
     public abstract class TweenAnimationClip<TAnimationBehaviour> : PlayableAsset, ITimelineClipAsset
         where TAnimationBehaviour : PlayableBehaviour, new()
     {
-        public TAnimationBehaviour behaviour = new TAnimationBehaviour();
+        [SerializeField] TAnimationBehaviour behaviour = new();
 
         public ClipCaps clipCaps
         {

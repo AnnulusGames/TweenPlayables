@@ -4,12 +4,12 @@ using System.ComponentModel;
 using UnityEngine.Timeline;
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [TrackBindingType(typeof(TextMeshProUGUI))]
     [TrackClipType(typeof(TweenTextMeshProUGUIClip))]
 #if UNITY_EDITOR
     [DisplayName("Tween Playables/UI/Tween TextMeshProUGUI Track")]
 #endif
-    public class TweenTextMeshProUGUITrack : TweenAnimationTrack<TextMeshProUGUI, TweenTextMeshProUGUIMixerBehaviour, TweenTextMeshProUGUIBehaviour> { }
+    public sealed class TweenTextMeshProUGUITrack : TweenAnimationTrack<TextMeshProUGUI, TweenTextMeshProUGUIMixerBehaviour, TweenTextMeshProUGUIBehaviour> { }
 }

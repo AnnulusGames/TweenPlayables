@@ -1,4 +1,4 @@
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     public enum ScrambleMode
     {

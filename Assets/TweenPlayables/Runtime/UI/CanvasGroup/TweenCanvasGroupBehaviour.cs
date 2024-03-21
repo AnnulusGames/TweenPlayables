@@ -1,17 +1,18 @@
 using System;
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
-    public class TweenCanvasGroupBehaviour : TweenAnimationBehaviour<CanvasGroup>
+    public sealed class TweenCanvasGroupBehaviour : TweenAnimationBehaviour<CanvasGroup>
     {
-        public FloatTweenParameter alpha;
+        [SerializeField] FloatTweenParameter alpha;
+
+        public ReadOnlyTweenParameter<float> Alpha => alpha;
 
         public override void OnTweenInitialize(CanvasGroup playerData)
         {
             alpha.SetInitialValue(playerData, playerData.alpha);
         }
     }
-
 }

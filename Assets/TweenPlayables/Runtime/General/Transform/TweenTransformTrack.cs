@@ -4,12 +4,12 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [TrackBindingType(typeof(Transform))]
     [TrackClipType(typeof(TweenTransformClip))]
 #if UNITY_EDITOR
     [DisplayName("Tween Playables/General/Tween Transform Track")]
 #endif
-    public class TweenTransformTrack : TweenAnimationTrack<Transform, TweenTransformMixerBehaviour, TweenTransformBehaviour> { }
+    public sealed class TweenTransformTrack : TweenAnimationTrack<Transform, TweenTransformMixerBehaviour, TweenTransformBehaviour> { }
 }

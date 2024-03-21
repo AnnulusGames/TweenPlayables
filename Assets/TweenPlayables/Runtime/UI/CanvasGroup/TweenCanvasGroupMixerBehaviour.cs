@@ -1,28 +1,19 @@
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
-    public class TweenCanvasGroupMixerBehaviour : TweenAnimationMixerBehaviour<CanvasGroup, TweenCanvasGroupBehaviour>
+    public sealed class TweenCanvasGroupMixerBehaviour : TweenAnimationMixerBehaviour<CanvasGroup, TweenCanvasGroupBehaviour>
     {
-        private FloatValueMixer alphaMixer = new FloatValueMixer();
+        readonly FloatValueMixer alphaMixer = new();
 
         public override void Blend(CanvasGroup binding, TweenCanvasGroupBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.alpha.active)
-            {
-                alphaMixer.Blend(behaviour.alpha.Evaluate(binding, progress), weight);
-            }
+            alphaMixer.TryBlend(behaviour.Alpha, binding, progress, weight);
         }
 
         public override void Apply(CanvasGroup binding)
         {
-            if (alphaMixer.ValueCount > 0)
-            {
-                binding.alpha = alphaMixer.Value;
-            }
-
-            alphaMixer.Clear();
+            alphaMixer.TryApplyAndClear(binding, (x, binding) => binding.alpha = x);
         }
     }
-
 }

@@ -1,13 +1,17 @@
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
-    public class TweenShadowBehaviour : TweenAnimationBehaviour<Shadow>
+    public sealed class TweenShadowBehaviour : TweenAnimationBehaviour<Shadow>
     {
-        public ColorTweenParameter color;
-        public Vector3TweenParameter distance;
+        [SerializeField] ColorTweenParameter color;
+        [SerializeField] Vector3TweenParameter distance;
+
+        public ReadOnlyTweenParameter<Color> Color => color;
+        public ReadOnlyTweenParameter<Vector3> Distance => distance;
 
         public override void OnTweenInitialize(Shadow playerData)
         {
@@ -15,5 +19,4 @@ namespace AnnulusGames.TweenPlayables
             distance.SetInitialValue(playerData, playerData.effectDistance);
         }
     }
-
 }

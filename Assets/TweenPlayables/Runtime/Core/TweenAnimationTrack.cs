@@ -1,13 +1,13 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Timeline;
 using UnityEngine.Playables;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
     public abstract class TweenAnimationTrack<TBinding, TMixerBehaviour, TAnimationBehaviour> : TrackAsset

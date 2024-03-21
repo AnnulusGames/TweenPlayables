@@ -1,97 +1,50 @@
 using TMPro;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
-    public class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
+    public sealed class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private FloatValueMixer fontSizeMixer = new FloatValueMixer();
-        private FloatValueMixer characterSpacingMixer = new FloatValueMixer();
-        private FloatValueMixer wordSpacingMixer = new FloatValueMixer();
-        private FloatValueMixer lineSpacingMixer = new FloatValueMixer();
-        private FloatValueMixer paragraphSpacingMixer = new FloatValueMixer();
-        private VertexGradientValueMixer colorGradientMixer = new VertexGradientValueMixer();
-        private string textValue = null;
+        readonly ColorValueMixer colorMixer = new();
+        readonly FloatValueMixer fontSizeMixer = new();
+        readonly FloatValueMixer characterSpacingMixer = new();
+        readonly FloatValueMixer wordSpacingMixer = new();
+        readonly FloatValueMixer lineSpacingMixer = new();
+        readonly FloatValueMixer paragraphSpacingMixer = new();
+        readonly VertexGradientValueMixer colorGradientMixer = new();
+
+        string textValue = null;
 
         public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            fontSizeMixer.TryBlend(behaviour.FontSize, binding, progress, weight);
+            characterSpacingMixer.TryBlend(behaviour.CharacterSpacing, binding, progress, weight);
+            wordSpacingMixer.TryBlend(behaviour.WordSpacing, binding, progress, weight);
+            lineSpacingMixer.TryBlend(behaviour.LineSpacing, binding, progress, weight);
+            paragraphSpacingMixer.TryBlend(behaviour.ParagraphSpacing, binding, progress, weight);
+            colorGradientMixer.TryBlend(behaviour.ColorGradient, binding, progress, weight);
+
+            if (behaviour.Text.IsActive)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.fontSize.active)
-            {
-                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.characterSpacing.active)
-            {
-                characterSpacingMixer.Blend(behaviour.characterSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.wordSpacing.active)
-            {
-                wordSpacingMixer.Blend(behaviour.wordSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.lineSpacing.active)
-            {
-                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.paragraphSpacing.active)
-            {
-                paragraphSpacingMixer.Blend(behaviour.paragraphSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.colorGradient.active)
-            {
-                colorGradientMixer.Blend(behaviour.colorGradient.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.text.active)
-            {
-                textValue = behaviour.text.Evaluate(binding, progress);
+                textValue = behaviour.Text.Evaluate(binding, progress);
             }
         }
 
         public override void Apply(TextMeshProUGUI binding)
         {
-            if (colorMixer.ValueCount > 0)
-            {
-                binding.color = colorMixer.Value;
-            }
-            if (fontSizeMixer.ValueCount > 0)
-            {
-                binding.fontSize = fontSizeMixer.Value;
-            }
-            if (characterSpacingMixer.ValueCount > 0)
-            {
-                binding.characterSpacing = characterSpacingMixer.Value;
-            }
-            if (wordSpacingMixer.ValueCount > 0)
-            {
-                binding.wordSpacing = wordSpacingMixer.Value;
-            }
-            if (lineSpacingMixer.ValueCount > 0)
-            {
-                binding.lineSpacing = lineSpacingMixer.Value;
-            }
-            if (paragraphSpacingMixer.ValueCount > 0)
-            {
-                binding.paragraphSpacing = paragraphSpacingMixer.Value;
-            }
-            if (colorGradientMixer.ValueCount > 0)
-            {
-                binding.colorGradient = colorGradientMixer.Value;
-            }
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
+            fontSizeMixer.TryApplyAndClear(binding, (x, binding) => binding.fontSize = x);
+            characterSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.characterSpacing = x);
+            wordSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.wordSpacing = x);
+            lineSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.lineSpacing = x);
+            paragraphSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.paragraphSpacing = x);
+            colorGradientMixer.TryApplyAndClear(binding, (x, binding) => binding.colorGradient = x);
+
             if (textValue != null)
             {
                 binding.text = textValue;
+                textValue = null;
             }
-
-            colorMixer.Clear();
-            fontSizeMixer.Clear();
-            characterSpacingMixer.Clear();
-            wordSpacingMixer.Clear();
-            lineSpacingMixer.Clear();
-            paragraphSpacingMixer.Clear();
-            colorGradientMixer.Clear();
-            textValue = null;
         }
     }
 }

@@ -1,28 +1,19 @@
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
-    public class TweenSpriteRendererMixerBehaviour : TweenAnimationMixerBehaviour<SpriteRenderer, TweenSpriteRendererBehaviour>
+    public sealed class TweenSpriteRendererMixerBehaviour : TweenAnimationMixerBehaviour<SpriteRenderer, TweenSpriteRendererBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
+        readonly ColorValueMixer colorMixer = new();
 
         public override void Blend(SpriteRenderer binding, TweenSpriteRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.active)
-            {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
         }
 
         public override void Apply(SpriteRenderer binding)
         {
-            if (colorMixer.ValueCount > 0)
-            {
-                binding.color = colorMixer.Value;
-            }
-
-            colorMixer.Clear();
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
         }
     }
-
 }

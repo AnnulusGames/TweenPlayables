@@ -1,7 +1,7 @@
 using System;
 using Random = UnityEngine.Random;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     public static class StringTweenUtility
     {

@@ -1,4 +1,4 @@
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
-    public class TweenRectTransformClip : TweenAnimationClip<TweenRectTransformBehaviour> { }
+    public sealed class TweenRectTransformClip : TweenAnimationClip<TweenRectTransformBehaviour> { }
 }

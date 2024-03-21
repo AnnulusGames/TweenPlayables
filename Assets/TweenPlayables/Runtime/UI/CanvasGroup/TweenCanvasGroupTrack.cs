@@ -4,12 +4,12 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [TrackBindingType(typeof(CanvasGroup))]
     [TrackClipType(typeof(TweenCanvasGroupClip))]
 #if UNITY_EDITOR
     [DisplayName("Tween Playables/UI/Tween CanvasGroup Track")]
 #endif
-    public class TweenCanvasGroupTrack : TweenAnimationTrack<CanvasGroup, TweenCanvasGroupMixerBehaviour, TweenCanvasGroupBehaviour> { }
+    public sealed class TweenCanvasGroupTrack : TweenAnimationTrack<CanvasGroup, TweenCanvasGroupMixerBehaviour, TweenCanvasGroupBehaviour> { }
 }

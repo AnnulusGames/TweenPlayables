@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEditor.Timeline;
 using UnityEngine.Timeline;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     public abstract class TweenAnimationClipEditor : ClipEditor
     {

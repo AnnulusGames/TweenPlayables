@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace AnnulusGames.TweenPlayables.Editor
+namespace TweenPlayables.Editor
 {
     [CustomPropertyDrawer(typeof(EaseParameter))]
     public class EaseParameterDrawer : PropertyDrawer

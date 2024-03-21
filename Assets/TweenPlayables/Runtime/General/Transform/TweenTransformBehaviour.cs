@@ -1,14 +1,18 @@
 using System;
 using UnityEngine;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
-    public class TweenTransformBehaviour : TweenAnimationBehaviour<Transform>
+    public sealed class TweenTransformBehaviour : TweenAnimationBehaviour<Transform>
     {
-        public Vector3TweenParameter position;
-        public Vector3TweenParameter rotation;
-        public Vector3TweenParameter scale;
+        [SerializeField] Vector3TweenParameter position;
+        [SerializeField] Vector3TweenParameter rotation;
+        [SerializeField] Vector3TweenParameter scale;
+
+        public ReadOnlyTweenParameter<Vector3> Position => position;
+        public ReadOnlyTweenParameter<Vector3> Rotation => rotation;
+        public ReadOnlyTweenParameter<Vector3> Scale => scale;
 
         public override void OnTweenInitialize(Transform playerData)
         {
@@ -17,5 +21,4 @@ namespace AnnulusGames.TweenPlayables
             scale.SetInitialValue(playerData, playerData.localScale);
         }
     }
-
 }

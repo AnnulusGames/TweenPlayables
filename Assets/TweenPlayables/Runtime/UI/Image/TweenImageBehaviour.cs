@@ -1,13 +1,17 @@
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace AnnulusGames.TweenPlayables
+namespace TweenPlayables
 {
     [Serializable]
-    public class TweenImageBehaviour : TweenAnimationBehaviour<Image>
+    public sealed class TweenImageBehaviour : TweenAnimationBehaviour<Image>
     {
-        public ColorTweenParameter color;
-        public FloatTweenParameter fillAmount;
+        [SerializeField] ColorTweenParameter color;
+        [SerializeField] FloatTweenParameter fillAmount;
+
+        public ReadOnlyTweenParameter<Color> Color => color;
+        public ReadOnlyTweenParameter<float> FillAmount => fillAmount;
 
         public override void OnTweenInitialize(Image playerData)
         {
@@ -15,5 +19,4 @@ namespace AnnulusGames.TweenPlayables
             fillAmount.SetInitialValue(playerData, playerData.fillAmount);
         }
     }
-
 }

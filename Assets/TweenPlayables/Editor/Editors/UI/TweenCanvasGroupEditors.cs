@@ -9,16 +9,16 @@ namespace TweenPlayables.Editor
     public sealed class TweenCanvasGroupTrackEditor : TweenAnimationTrackEditor
     {
         public override string DefaultTrackName => "Tween CanvasGroup Track";
-        public override Color TrackColor => Styling.uguiColor;
-        public override Texture2D TrackIcon => Styling.canvasGroupIcon;
+        public override Color TrackColor => Styles.UGUIColor;
+        public override Texture2D TrackIcon => Styles.CanvasGroupIcon;
     }
 
     [CustomTimelineEditor(typeof(TweenCanvasGroupClip))]
     public sealed class TweenCanvasGroupClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween CanvasGroup";
-        public override Color ClipColor => Styling.uguiColor;
-        public override Texture2D ClipIcon => Styling.canvasGroupIcon;
+        public override Color ClipColor => Styles.UGUIColor;
+        public override Texture2D ClipIcon => Styles.CanvasGroupIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenCanvasGroupBehaviour))]

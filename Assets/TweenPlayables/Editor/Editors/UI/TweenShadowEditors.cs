@@ -8,16 +8,16 @@ namespace TweenPlayables.Editor
     [CustomTimelineEditor(typeof(TweenShadowTrack))]
     public sealed class TweenShadowTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color TrackColor => Styling.uguiColor;
-        public override Texture2D TrackIcon => Styling.shadowIcon;
+        public override Color TrackColor => Styles.UGUIColor;
+        public override Texture2D TrackIcon => Styles.ShadowIcon;
         public override string DefaultTrackName => "Tween Shadow Track";
     }
 
     [CustomTimelineEditor(typeof(TweenShadowClip))]
     public sealed class TweenShadowClipEditor : TweenAnimationClipEditor
     {
-        public override Color ClipColor => Styling.uguiColor;
-        public override Texture2D ClipIcon => Styling.shadowIcon;
+        public override Color ClipColor => Styles.UGUIColor;
+        public override Texture2D ClipIcon => Styles.ShadowIcon;
         public override string DefaultClipName => "Tween Shadow";
     }
 

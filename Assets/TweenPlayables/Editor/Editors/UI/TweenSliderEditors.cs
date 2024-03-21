@@ -9,16 +9,16 @@ namespace TweenPlayables.Editor
     public sealed class TweenSliderTrackEditor : TweenAnimationTrackEditor
     {
         public override string DefaultTrackName => "Tween Slider Track";
-        public override Color TrackColor => Styling.uguiColor;
-        public override Texture2D TrackIcon => Styling.sliderIcon;
+        public override Color TrackColor => Styles.UGUIColor;
+        public override Texture2D TrackIcon => Styles.SliderIcon;
     }
 
     [CustomTimelineEditor(typeof(TweenSliderClip))]
     public sealed class TweenSliderClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween Slider";
-        public override Color ClipColor => Styling.uguiColor;
-        public override Texture2D ClipIcon => Styling.sliderIcon;
+        public override Color ClipColor => Styles.UGUIColor;
+        public override Texture2D ClipIcon => Styles.SliderIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenSliderBehaviour))]

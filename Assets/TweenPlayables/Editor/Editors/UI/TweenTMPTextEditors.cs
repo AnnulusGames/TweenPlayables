@@ -8,8 +8,8 @@ namespace TweenPlayables.Editor
     [CustomTimelineEditor(typeof(TweenTMPTextTrack))]
     public sealed class TweenTMPTextTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color TrackColor => Styling.uguiColor;
-        public override Texture2D TrackIcon => Styling.textMeshProUGUIIcon;
+        public override Color TrackColor => Styles.UGUIColor;
+        public override Texture2D TrackIcon => Styles.TextMeshProUGUIIcon;
         public override string DefaultTrackName => "Tween TMP_Text Track";
     }
 
@@ -17,8 +17,8 @@ namespace TweenPlayables.Editor
     public sealed class TweenTMPTextClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween TMP_Text";
-        public override Color ClipColor => Styling.uguiColor;
-        public override Texture2D ClipIcon => Styling.textMeshProUGUIIcon;
+        public override Color ClipColor => Styles.UGUIColor;
+        public override Texture2D ClipIcon => Styles.TextMeshProUGUIIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenTMPTextBehaviour))]

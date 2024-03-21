@@ -8,8 +8,8 @@ namespace TweenPlayables.Editor
     [CustomTimelineEditor(typeof(TweenTransformTrack))]
     public sealed class TweenTransformTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color TrackColor => Styling.transformColor;
-        public override Texture2D TrackIcon => Styling.transformIcon;
+        public override Color TrackColor => Styles.TransformColor;
+        public override Texture2D TrackIcon => Styles.transformIcon;
         public override string DefaultTrackName => "Tween Transform Track";
     }
 
@@ -17,8 +17,8 @@ namespace TweenPlayables.Editor
     public sealed class TweenTransformClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween Transform";
-        public override Color ClipColor => Styling.transformColor;
-        public override Texture2D ClipIcon => Styling.transformIcon;
+        public override Color ClipColor => Styles.TransformColor;
+        public override Texture2D ClipIcon => Styles.transformIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenTransformBehaviour))]

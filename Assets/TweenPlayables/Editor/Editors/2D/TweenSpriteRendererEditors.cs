@@ -8,8 +8,8 @@ namespace TweenPlayables.Editor
     [CustomTimelineEditor(typeof(TweenSpriteRendererTrack))]
     public sealed class TweenSpriteRendererTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color TrackColor => Styling.rendererColor;
-        public override Texture2D TrackIcon => Styling.spriteRendererIcon;
+        public override Color TrackColor => Styles.RendererColor;
+        public override Texture2D TrackIcon => Styles.SpriteRendererIcon;
         public override string DefaultTrackName => "Tween SpriteRenderer Track";
     }
 
@@ -17,8 +17,8 @@ namespace TweenPlayables.Editor
     public sealed class TweenSpriteRendererClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween SpriteRenderer";
-        public override Color ClipColor => Styling.rendererColor;
-        public override Texture2D ClipIcon => Styling.spriteRendererIcon;
+        public override Color ClipColor => Styles.RendererColor;
+        public override Texture2D ClipIcon => Styles.SpriteRendererIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenSpriteRendererBehaviour))]

@@ -9,16 +9,16 @@ namespace TweenPlayables.Editor
     public sealed class TweenCameraTrackEditor : TweenAnimationTrackEditor
     {
         public override string DefaultTrackName => "Tween Camera Track";
-        public override Color TrackColor => Styling.cameraColor;
-        public override Texture2D TrackIcon => Styling.cameraIcon;
+        public override Color TrackColor => Styles.CameraColor;
+        public override Texture2D TrackIcon => Styles.cameraIcon;
     }
 
     [CustomTimelineEditor(typeof(TweenCameraClip))]
     public sealed class TweenCameraClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween Camera";
-        public override Color ClipColor => Styling.cameraColor;
-        public override Texture2D ClipIcon => Styling.cameraIcon;
+        public override Color ClipColor => Styles.CameraColor;
+        public override Texture2D ClipIcon => Styles.cameraIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenCameraBehaviour))]

@@ -8,8 +8,8 @@ namespace TweenPlayables.Editor
     [CustomTimelineEditor(typeof(TweenAudioSourceTrack))]
     public sealed class TweenAudioSourceTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color TrackColor => Styling.audioColor;
-        public override Texture2D TrackIcon => Styling.audioSourceIcon;
+        public override Color TrackColor => Styles.AudioColor;
+        public override Texture2D TrackIcon => Styles.AudioSourceIcon;
         public override string DefaultTrackName => "Tween AudioSource Track";
     }
 
@@ -17,8 +17,8 @@ namespace TweenPlayables.Editor
     public sealed class TweenAudioSourceClipEditor : TweenAnimationClipEditor
     {
         public override string DefaultClipName => "Tween AudioSource";
-        public override Color ClipColor => Styling.audioColor;
-        public override Texture2D ClipIcon => Styling.audioSourceIcon;
+        public override Color ClipColor => Styles.AudioColor;
+        public override Texture2D ClipIcon => Styles.AudioSourceIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenAudioSourceBehaviour))]

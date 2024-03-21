@@ -30,7 +30,7 @@ namespace TweenPlayables.Editor
             foldoutRect.height = headerHeight;
 
             var active = activeProperty.boolValue;
-            property.isExpanded = Styling.ToggleGroup(foldoutRect, property.isExpanded, ref active, property.displayName);
+            property.isExpanded = Styles.ToggleGroup(foldoutRect, property.isExpanded, ref active, property.displayName);
             activeProperty.boolValue = active;
             if (property.isExpanded)
             {

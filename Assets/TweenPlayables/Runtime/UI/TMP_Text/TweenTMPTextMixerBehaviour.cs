@@ -2,7 +2,7 @@ using TMPro;
 
 namespace TweenPlayables
 {
-    public sealed class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
+    public sealed class TweenTMPTextMixerBehaviour : TweenAnimationMixerBehaviour<TMP_Text, TweenTMPTextBehaviour>
     {
         readonly ColorValueMixer colorMixer = new();
         readonly FloatValueMixer fontSizeMixer = new();
@@ -14,7 +14,7 @@ namespace TweenPlayables
 
         string textValue = null;
 
-        public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
+        public override void Blend(TMP_Text binding, TweenTMPTextBehaviour behaviour, float weight, float progress)
         {
             colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
             fontSizeMixer.TryBlend(behaviour.FontSize, binding, progress, weight);
@@ -30,7 +30,7 @@ namespace TweenPlayables
             }
         }
 
-        public override void Apply(TextMeshProUGUI binding)
+        public override void Apply(TMP_Text binding)
         {
             colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
             fontSizeMixer.TryApplyAndClear(binding, (x, binding) => binding.fontSize = x);

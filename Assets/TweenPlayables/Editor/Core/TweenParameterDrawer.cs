@@ -8,29 +8,29 @@ namespace TweenPlayables.Editor
     [CustomPropertyDrawer(typeof(TweenParameter<>), true)]
     public class TweenParamterDrawer : PropertyDrawer
     {
-        protected float headerHeight = EditorGUIUtility.singleLineHeight * 1.2f;
+        protected static readonly float headerHeight = EditorGUIUtility.singleLineHeight * 1.2f;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            int indent = EditorGUI.indentLevel;
+            var indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
             position.xMin += 15f * indent;
 
-            SerializedProperty activeProperty = property.FindPropertyRelative("active");
-            float height = GetPropertyHeight(property, label);
+            var activeProperty = property.FindPropertyRelative("active");
+            var height = GetPropertyHeight(property, label);
 
-            Rect boxRect = position;
+            var boxRect = position;
             boxRect.xMin -= 3f;
             boxRect.height = height;
             EditorGUI.LabelField(boxRect, GUIContent.none, EditorStyles.helpBox);
 
-            Rect foldoutRect = position;
+            var foldoutRect = position;
             foldoutRect.xMin += 15f;
             foldoutRect.height = headerHeight;
 
-            bool active = activeProperty.boolValue;
-            property.isExpanded = Styling.ToggleGroup(foldoutRect, property.isExpanded, ref active, property.displayName);
+            var active = activeProperty.boolValue;
+            property.isExpanded = Styles.ToggleGroup(foldoutRect, property.isExpanded, ref active, property.displayName);
             activeProperty.boolValue = active;
             if (property.isExpanded)
             {
@@ -48,7 +48,7 @@ namespace TweenPlayables.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float height = headerHeight;
+            var height = headerHeight;
             if (property.isExpanded)
             {
                 GUIHelper.AddPropertyHeight(ref height, property.FindPropertyRelative("startValue"));
@@ -71,7 +71,7 @@ namespace TweenPlayables.Editor
     }
 
     [CustomPropertyDrawer(typeof(StringTweenParameter))]
-    public class StringTweenParameterDrawer : TweenParamterDrawer
+    public sealed class StringTweenParameterDrawer : TweenParamterDrawer
     {
         public override void DrawProperties(Rect position, SerializedProperty property)
         {
@@ -90,7 +90,7 @@ namespace TweenPlayables.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            float height = headerHeight;
+            var height = headerHeight;
             if (property.isExpanded)
             {
                 height += (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) * 2;
@@ -114,9 +114,9 @@ namespace TweenPlayables.Editor
             return height;
         }
 
-        private void DrawTextArea(ref Rect position, SerializedProperty property, GUIContent label)
+        static void DrawTextArea(ref Rect position, SerializedProperty property, GUIContent label)
         {
-            Rect labelRect = new Rect()
+            var labelRect = new Rect()
             {
                 x = position.x,
                 y = position.y,
@@ -126,36 +126,37 @@ namespace TweenPlayables.Editor
 
             EditorGUI.LabelField(labelRect, label.text);
 
-            EditorGUI.BeginChangeCheck();
-
-            Rect textAreaRect = new Rect()
+            using (var changeCheck = new EditorGUI.ChangeCheckScope())
             {
-                x = labelRect.x,
-                y = labelRect.y + EditorGUIUtility.singleLineHeight,
-                width = labelRect.width,
-                height = GetTextAreaHeight(property.stringValue)
-            };
+                var textAreaRect = new Rect()
+                {
+                    x = labelRect.x,
+                    y = labelRect.y + EditorGUIUtility.singleLineHeight,
+                    width = labelRect.width,
+                    height = GetTextAreaHeight(property.stringValue)
+                };
 
-            string textAreaValue = EditorGUI.TextArea(textAreaRect, property.stringValue);
+                var textAreaValue = EditorGUI.TextArea(textAreaRect, property.stringValue);
 
-            if (EditorGUI.EndChangeCheck())
-            {
-                property.stringValue = textAreaValue;
+                if (changeCheck.changed)
+                {
+                    property.stringValue = textAreaValue;
+                }
+
+                position.y += textAreaRect.height + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             }
-
-            position.y += textAreaRect.height + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
         }
 
-        private int GetNumberOfLines(string text)
+        static int GetNumberOfLines(string text)
         {
-            string content = Regex.Replace(text, @"\r\n|\n\r|\r|\n", Environment.NewLine);
-            string[] lines = content.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            var content = Regex.Replace(text, @"\r\n|\n\r|\r|\n", Environment.NewLine);
+            var lines = content.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
             return lines.Length;
         }
 
-        private float GetTextAreaHeight(string text)
+        static float GetTextAreaHeight(string text)
         {
-            float height = (EditorGUIUtility.singleLineHeight - 3.0f) * GetNumberOfLines(text) + 3.0f;
+            var height = (EditorGUIUtility.singleLineHeight - 3.0f) * GetNumberOfLines(text) + 3.0f;
             return Math.Max(height, EditorGUIUtility.singleLineHeight * 2.5f);
         }
     }

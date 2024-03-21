@@ -1,48 +1,34 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
-using UnityEditor.Playables;
-using UnityEngine.Timeline;
 
 namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenTransformTrack))]
-    public class TweenTransformTrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenTransformTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color trackColor => Styling.transformColor;
-        public override Texture2D trackIcon => Styling.transformIcon;
-        public override string defaultTrackName => "Tween Transform Track";
+        public override Color TrackColor => Styles.TransformColor;
+        public override Texture2D TrackIcon => Styles.transformIcon;
+        public override string DefaultTrackName => "Tween Transform Track";
     }
 
     [CustomTimelineEditor(typeof(TweenTransformClip))]
-    public class TweenTransformClipEditor : TweenAnimationClipEditor
+    public sealed class TweenTransformClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween Transform";
-        public override Color clipColor => Styling.transformColor;
-        public override Texture2D clipIcon => Styling.transformIcon;
+        public override string DefaultClipName => "Tween Transform";
+        public override Color ClipColor => Styles.TransformColor;
+        public override Texture2D ClipIcon => Styles.transformIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenTransformBehaviour))]
-    public class TweenTransformBehaviourDrawer : PropertyDrawer
+    public sealed class TweenTransformBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("position"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("rotation"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("scale"));
-        }
+            "position", "rotation", "scale"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 11f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("position"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("rotation"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("scale"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

@@ -1,30 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
-using UnityEditor;
 using UnityEditor.Timeline;
 
 namespace TweenPlayables.Editor
 {
     public abstract class TweenAnimationTrackEditor : TrackEditor
     {
-        public abstract string defaultTrackName { get; }
-        public abstract Color trackColor { get; }
-        public abstract Texture2D trackIcon { get; }
+        public abstract string DefaultTrackName { get; }
+        public abstract Color TrackColor { get; }
+        public abstract Texture2D TrackIcon { get; }
 
         public override TrackDrawOptions GetTrackOptions(TrackAsset track, Object binding)
         {
             var options = base.GetTrackOptions(track, binding);
-            options.trackColor = trackColor;
-            options.icon = trackIcon;
+            options.trackColor = TrackColor;
+            options.icon = TrackIcon;
             return options;
         }
 
         public override void OnCreate(TrackAsset track, TrackAsset copiedFrom)
         {
-            track.name = defaultTrackName;
+            track.name = DefaultTrackName;
         }
     }
-
 }

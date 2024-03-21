@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.Timeline;
@@ -5,39 +6,29 @@ using UnityEditor.Timeline;
 namespace TweenPlayables.Editor
 {
     [CustomTimelineEditor(typeof(TweenAudioSourceTrack))]
-    public class TweenAudioSourceTrackEditor : TweenAnimationTrackEditor
+    public sealed class TweenAudioSourceTrackEditor : TweenAnimationTrackEditor
     {
-        public override Color trackColor => Styling.audioColor;
-        public override Texture2D trackIcon => Styling.audioSourceIcon;
-        public override string defaultTrackName => "Tween AudioSource Track";
+        public override Color TrackColor => Styles.AudioColor;
+        public override Texture2D TrackIcon => Styles.AudioSourceIcon;
+        public override string DefaultTrackName => "Tween AudioSource Track";
     }
 
     [CustomTimelineEditor(typeof(TweenAudioSourceClip))]
-    public class TweenAudioSourceClipEditor : TweenAnimationClipEditor
+    public sealed class TweenAudioSourceClipEditor : TweenAnimationClipEditor
     {
-        public override string defaultClipName => "Tween AudioSource";
-        public override Color clipColor => Styling.audioColor;
-        public override Texture2D clipIcon => Styling.audioSourceIcon;
+        public override string DefaultClipName => "Tween AudioSource";
+        public override Color ClipColor => Styles.AudioColor;
+        public override Texture2D ClipIcon => Styles.AudioSourceIcon;
     }
 
     [CustomPropertyDrawer(typeof(TweenAudioSourceBehaviour))]
-    public class TweenAudioSourceBehaviourDrawer : PropertyDrawer
+    public sealed class TweenAudioSourceBehaviourDrawer : TweenAnimationBehaviourDrawer
     {
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        static readonly string[] parameters = new string[]
         {
-            position.y += 7f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("volume"));
-            position.y += 2f;
-            GUIHelper.Field(ref position, property.FindPropertyRelative("pitch"));
-        }
+            "volume", "pitch"
+        };
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            float height = 9f;
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("volume"));
-            height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("pitch"));
-
-            return height;
-        }
+        protected override IEnumerable<string> GetPropertyNames() => parameters;
     }
 }

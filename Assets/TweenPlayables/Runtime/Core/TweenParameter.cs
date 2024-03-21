@@ -5,7 +5,14 @@ using TMPro;
 
 namespace TweenPlayables
 {
-    public abstract class TweenParameter<T>
+    public abstract class ReadOnlyTweenParameter<T>
+    {
+        public virtual bool IsActive { get; }
+        public abstract T Evaluate(object key, float t);
+        public abstract T GetRelativeValue(object key, T value);
+    }
+
+    public abstract class TweenParameter<T> : ReadOnlyTweenParameter<T>
     {
         public TweenParameter() { }
         public TweenParameter(T startValue, T endValue)
@@ -20,7 +27,7 @@ namespace TweenPlayables
         [SerializeField] EaseParameter ease;
         [SerializeField] bool relative;
 
-        public bool IsActive => isActive;
+        public override bool IsActive => isActive;
         public T StartValue => startValue;
         public T EndValue => endValue;
         public EaseParameter EaseParameter => ease;
@@ -45,9 +52,6 @@ namespace TweenPlayables
                 initialValueDictionary.TryAdd(key, value);
             }
         }
-
-        public abstract T Evaluate(object key, float t);
-        public abstract T GetRelativeValue(object key, T value);
     }
 
     [Serializable]

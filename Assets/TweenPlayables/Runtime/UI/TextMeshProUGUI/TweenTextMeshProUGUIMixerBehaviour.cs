@@ -4,13 +4,13 @@ namespace TweenPlayables
 {
     public class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private FloatValueMixer fontSizeMixer = new FloatValueMixer();
-        private FloatValueMixer characterSpacingMixer = new FloatValueMixer();
-        private FloatValueMixer wordSpacingMixer = new FloatValueMixer();
-        private FloatValueMixer lineSpacingMixer = new FloatValueMixer();
-        private FloatValueMixer paragraphSpacingMixer = new FloatValueMixer();
-        private VertexGradientValueMixer colorGradientMixer = new VertexGradientValueMixer();
+        private ColorValueMixer colorMixer = new();
+        private FloatValueMixer fontSizeMixer = new();
+        private FloatValueMixer characterSpacingMixer = new();
+        private FloatValueMixer wordSpacingMixer = new();
+        private FloatValueMixer lineSpacingMixer = new();
+        private FloatValueMixer paragraphSpacingMixer = new();
+        private VertexGradientValueMixer colorGradientMixer = new();
         private string textValue = null;
 
         public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)

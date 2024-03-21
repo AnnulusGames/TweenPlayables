@@ -4,7 +4,7 @@ namespace TweenPlayables
 {
     public class TweenSpriteRendererMixerBehaviour : TweenAnimationMixerBehaviour<SpriteRenderer, TweenSpriteRendererBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
+        private ColorValueMixer colorMixer = new();
 
         public override void Blend(SpriteRenderer binding, TweenSpriteRendererBehaviour behaviour, float weight, float progress)
         {

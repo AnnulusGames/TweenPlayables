@@ -4,8 +4,8 @@ namespace TweenPlayables
 {
     public class TweenOutlineMixerBehaviour : TweenAnimationMixerBehaviour<Outline, TweenOutlineBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private Vector2ValueMixer distanceMixer = new Vector2ValueMixer();
+        private ColorValueMixer colorMixer = new();
+        private Vector2ValueMixer distanceMixer = new();
 
         public override void Blend(Outline binding, TweenOutlineBehaviour behaviour, float weight, float progress)
         {

@@ -4,7 +4,7 @@ namespace TweenPlayables
 {
     public class TweenSliderMixerBehaviour : TweenAnimationMixerBehaviour<Slider, TweenSliderBehaviour>
     {
-        private FloatValueMixer valueMixer = new FloatValueMixer();
+        private FloatValueMixer valueMixer = new();
 
         public override void Blend(Slider binding, TweenSliderBehaviour behaviour, float weight, float progress)
         {

@@ -6,11 +6,11 @@ namespace TweenPlayables
 {
     public class TweenRendererMixerBehaviour : TweenAnimationMixerBehaviour<Renderer, TweenRendererBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private Vector2ValueMixer textureOffsetMixer = new Vector2ValueMixer();
-        private Vector2ValueMixer textureScaleMixer = new Vector2ValueMixer();
+        private ColorValueMixer colorMixer = new();
+        private Vector2ValueMixer textureOffsetMixer = new();
+        private Vector2ValueMixer textureScaleMixer = new();
 
-        private Dictionary<object, Material> materialDictionary = new Dictionary<object, Material>();
+        private Dictionary<object, Material> materialDictionary = new();
 
         public override void OnPlayableDestroy(Playable playable)
         {

@@ -4,8 +4,8 @@ namespace TweenPlayables
 {
     public class TweenAudioSourceMixerBehaviour : TweenAnimationMixerBehaviour<AudioSource, TweenAudioSourceBehaviour>
     {
-        private FloatValueMixer volumeMixer = new FloatValueMixer();
-        private FloatValueMixer pitchMixer = new FloatValueMixer();
+        private FloatValueMixer volumeMixer = new();
+        private FloatValueMixer pitchMixer = new();
 
         public override void Blend(AudioSource binding, TweenAudioSourceBehaviour behaviour, float weight, float progress)
         {

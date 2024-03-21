@@ -4,10 +4,10 @@ namespace TweenPlayables
 {
     public class TweenRectTransformMixerBehaviour : TweenAnimationMixerBehaviour<RectTransform, TweenRectTransformBehaviour>
     {
-        private Vector3ValueMixer anchoredPositionMixer = new Vector3ValueMixer();
-        private Vector2ValueMixer sizeDeltaMixer = new Vector2ValueMixer();
-        private Vector3ValueMixer rotationMixer = new Vector3ValueMixer();
-        private Vector3ValueMixer scaleMixer = new Vector3ValueMixer();
+        readonly Vector3ValueMixer anchoredPositionMixer = new();
+        readonly Vector2ValueMixer sizeDeltaMixer = new();
+        readonly Vector3ValueMixer rotationMixer = new();
+        readonly Vector3ValueMixer scaleMixer = new();
 
         public override void Blend(RectTransform binding, TweenRectTransformBehaviour behaviour, float weight, float progress)
         {

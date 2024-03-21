@@ -4,9 +4,9 @@ namespace TweenPlayables
 {
     public class TweenCameraMixerBehaviour : TweenAnimationMixerBehaviour<Camera, TweenCameraBehaviour>
     {
-        private FloatValueMixer orthoSizeMixer = new FloatValueMixer();
-        private FloatValueMixer fovMixer = new FloatValueMixer();
-        private ColorValueMixer backgroundColorMixer = new ColorValueMixer();
+        private FloatValueMixer orthoSizeMixer = new();
+        private FloatValueMixer fovMixer = new();
+        private ColorValueMixer backgroundColorMixer = new();
 
         public override void Blend(Camera binding, TweenCameraBehaviour behaviour, float weight, float progress)
         {

@@ -4,7 +4,7 @@ namespace TweenPlayables
 {
     public class TweenCanvasGroupMixerBehaviour : TweenAnimationMixerBehaviour<CanvasGroup, TweenCanvasGroupBehaviour>
     {
-        private FloatValueMixer alphaMixer = new FloatValueMixer();
+        private FloatValueMixer alphaMixer = new();
 
         public override void Blend(CanvasGroup binding, TweenCanvasGroupBehaviour behaviour, float weight, float progress)
         {

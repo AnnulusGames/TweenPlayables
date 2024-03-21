@@ -4,8 +4,8 @@ namespace TweenPlayables
 {
     public class TweenImageMixerBehaviour : TweenAnimationMixerBehaviour<Image, TweenImageBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private FloatValueMixer fillAmountMixer = new FloatValueMixer();
+        private ColorValueMixer colorMixer = new();
+        private FloatValueMixer fillAmountMixer = new();
 
         public override void Blend(Image binding, TweenImageBehaviour behaviour, float weight, float progress)
         {

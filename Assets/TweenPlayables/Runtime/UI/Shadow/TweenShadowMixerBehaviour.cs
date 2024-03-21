@@ -4,8 +4,8 @@ namespace TweenPlayables
 {
     public class TweenShadowMixerBehaviour : TweenAnimationMixerBehaviour<Shadow, TweenShadowBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private Vector2ValueMixer distanceMixer = new Vector2ValueMixer();
+        private ColorValueMixer colorMixer = new();
+        private Vector2ValueMixer distanceMixer = new();
 
         public override void Blend(Shadow binding, TweenShadowBehaviour behaviour, float weight, float progress)
         {

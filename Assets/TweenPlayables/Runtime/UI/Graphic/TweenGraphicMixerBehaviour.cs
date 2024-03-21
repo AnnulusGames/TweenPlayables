@@ -4,7 +4,7 @@ namespace TweenPlayables
 {
     public class TweenGraphicMixerBehaviour : TweenAnimationMixerBehaviour<Graphic, TweenGraphicBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
+        private ColorValueMixer colorMixer = new();
 
         public override void Blend(Graphic binding, TweenGraphicBehaviour behaviour, float weight, float progress)
         {

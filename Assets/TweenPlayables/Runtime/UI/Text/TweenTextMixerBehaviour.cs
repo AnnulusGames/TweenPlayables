@@ -4,9 +4,9 @@ namespace TweenPlayables
 {
     public class TweenTextMixerBehaviour : TweenAnimationMixerBehaviour<Text, TweenTextBehaviour>
     {
-        private ColorValueMixer colorMixer = new ColorValueMixer();
-        private IntValueMixer fontSizeMixer = new IntValueMixer();
-        private FloatValueMixer lineSpacingMixer = new FloatValueMixer();
+        private ColorValueMixer colorMixer = new();
+        private IntValueMixer fontSizeMixer = new();
+        private FloatValueMixer lineSpacingMixer = new();
         private string textValue = null;
 
         public override void Blend(Text binding, TweenTextBehaviour behaviour, float weight, float progress)

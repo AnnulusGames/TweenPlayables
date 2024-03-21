@@ -4,9 +4,9 @@ namespace TweenPlayables
 {
     public class TweenTransformMixerBehaviour : TweenAnimationMixerBehaviour<Transform, TweenTransformBehaviour>
     {
-        private Vector3ValueMixer positionMixer = new Vector3ValueMixer();
-        private Vector3ValueMixer rotationMixer = new Vector3ValueMixer();
-        private Vector3ValueMixer scaleMixer = new Vector3ValueMixer();
+        private Vector3ValueMixer positionMixer = new();
+        private Vector3ValueMixer rotationMixer = new();
+        private Vector3ValueMixer scaleMixer = new();
 
         public override void Blend(Transform binding, TweenTransformBehaviour behaviour, float weight, float progress)
         {

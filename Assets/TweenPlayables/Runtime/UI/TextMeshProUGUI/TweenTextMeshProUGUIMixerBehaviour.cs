@@ -16,34 +16,14 @@ namespace TweenPlayables
 
         public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.Color.IsActive)
-            {
-                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.FontSize.IsActive)
-            {
-                fontSizeMixer.Blend(behaviour.FontSize.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.CharacterSpacing.IsActive)
-            {
-                characterSpacingMixer.Blend(behaviour.CharacterSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.WordSpacing.IsActive)
-            {
-                wordSpacingMixer.Blend(behaviour.WordSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.LineSpacing.IsActive)
-            {
-                lineSpacingMixer.Blend(behaviour.LineSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.ParagraphSpacing.IsActive)
-            {
-                paragraphSpacingMixer.Blend(behaviour.ParagraphSpacing.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.ColorGradient.IsActive)
-            {
-                colorGradientMixer.Blend(behaviour.ColorGradient.Evaluate(binding, progress), weight);
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            fontSizeMixer.TryBlend(behaviour.FontSize, binding, progress, weight);
+            characterSpacingMixer.TryBlend(behaviour.CharacterSpacing, binding, progress, weight);
+            wordSpacingMixer.TryBlend(behaviour.WordSpacing, binding, progress, weight);
+            lineSpacingMixer.TryBlend(behaviour.LineSpacing, binding, progress, weight);
+            paragraphSpacingMixer.TryBlend(behaviour.ParagraphSpacing, binding, progress, weight);
+            colorGradientMixer.TryBlend(behaviour.ColorGradient, binding, progress, weight);
+
             if (behaviour.Text.IsActive)
             {
                 textValue = behaviour.Text.Evaluate(binding, progress);
@@ -52,47 +32,19 @@ namespace TweenPlayables
 
         public override void Apply(TextMeshProUGUI binding)
         {
-            if (colorMixer.HasValue)
-            {
-                binding.color = colorMixer.Value;
-            }
-            if (fontSizeMixer.HasValue)
-            {
-                binding.fontSize = fontSizeMixer.Value;
-            }
-            if (characterSpacingMixer.HasValue)
-            {
-                binding.characterSpacing = characterSpacingMixer.Value;
-            }
-            if (wordSpacingMixer.HasValue)
-            {
-                binding.wordSpacing = wordSpacingMixer.Value;
-            }
-            if (lineSpacingMixer.HasValue)
-            {
-                binding.lineSpacing = lineSpacingMixer.Value;
-            }
-            if (paragraphSpacingMixer.HasValue)
-            {
-                binding.paragraphSpacing = paragraphSpacingMixer.Value;
-            }
-            if (colorGradientMixer.HasValue)
-            {
-                binding.colorGradient = colorGradientMixer.Value;
-            }
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
+            fontSizeMixer.TryApplyAndClear(binding, (x, binding) => binding.fontSize = x);
+            characterSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.characterSpacing = x);
+            wordSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.wordSpacing = x);
+            lineSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.lineSpacing = x);
+            paragraphSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.paragraphSpacing = x);
+            colorGradientMixer.TryApplyAndClear(binding, (x, binding) => binding.colorGradient = x);
+
             if (textValue != null)
             {
                 binding.text = textValue;
+                textValue = null;
             }
-
-            colorMixer.Clear();
-            fontSizeMixer.Clear();
-            characterSpacingMixer.Clear();
-            wordSpacingMixer.Clear();
-            lineSpacingMixer.Clear();
-            paragraphSpacingMixer.Clear();
-            colorGradientMixer.Clear();
-            textValue = null;
         }
     }
 }

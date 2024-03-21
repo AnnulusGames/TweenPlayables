@@ -11,48 +11,18 @@ namespace TweenPlayables
 
         public override void Blend(LineRenderer binding, TweenLineRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.StartColor.IsActive)
-            {
-                startColorMixer.Blend(behaviour.StartColor.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.EndColor.IsActive)
-            {
-                endColorMixer.Blend(behaviour.EndColor.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.StartWidth.IsActive)
-            {
-                startWidthMixer.Blend(behaviour.StartWidth.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.EndWidth.IsActive)
-            {
-                endWidthMixer.Blend(behaviour.EndWidth.Evaluate(binding, progress), weight);
-            }
+            startColorMixer.TryBlend(behaviour.StartColor, binding, progress, weight);
+            endColorMixer.TryBlend(behaviour.EndColor, binding, progress, weight);
+            startWidthMixer.TryBlend(behaviour.StartWidth, binding, progress, weight);
+            endWidthMixer.TryBlend(behaviour.EndWidth, binding, progress, weight);
         }
 
         public override void Apply(LineRenderer binding)
         {
-            if (startColorMixer.HasValue)
-            {
-                binding.startColor = startColorMixer.Value;
-            }
-            if (endColorMixer.HasValue)
-            {
-                binding.endColor = endColorMixer.Value;
-            }
-            if (startWidthMixer.HasValue)
-            {
-                binding.startWidth = startWidthMixer.Value;
-            }
-            if (endWidthMixer.HasValue)
-            {
-                binding.endWidth = endWidthMixer.Value;
-            }
-
-            startColorMixer.Clear();
-            endColorMixer.Clear();
-            startWidthMixer.Clear();
-            endWidthMixer.Clear();
+            startColorMixer.TryApplyAndClear(binding, (x, binding) => binding.startColor = x);
+            endColorMixer.TryApplyAndClear(binding, (x, binding) => binding.endColor = x);
+            startWidthMixer.TryApplyAndClear(binding, (x, binding) => binding.startWidth = x);
+            endWidthMixer.TryApplyAndClear(binding, (x, binding) => binding.endWidth = x);
         }
     }
-
 }

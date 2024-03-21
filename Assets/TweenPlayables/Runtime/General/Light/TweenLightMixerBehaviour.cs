@@ -10,29 +10,16 @@ namespace TweenPlayables
 
         public override void Blend(Light binding, TweenLightBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.Color.IsActive)
-            {
-                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.Intensity.IsActive)
-            {
-                intensityMixer.Blend(behaviour.Intensity.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.ShadowStrength.IsActive)
-            {
-                shadowStrengthMixer.Blend(behaviour.ShadowStrength.Evaluate(binding, progress), weight);
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            intensityMixer.TryBlend(behaviour.Intensity, binding, progress, weight);
+            shadowStrengthMixer.TryBlend(behaviour.ShadowStrength, binding, progress, weight);
         }
 
         public override void Apply(Light binding)
         {
-            if (colorMixer.HasValue) binding.color = colorMixer.Value;
-            if (intensityMixer.HasValue) binding.intensity = intensityMixer.Value;
-            if (shadowStrengthMixer.HasValue) binding.shadowStrength = shadowStrengthMixer.Value;
-
-            colorMixer.Clear();
-            intensityMixer.Clear();
-            shadowStrengthMixer.Clear();
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
+            intensityMixer.TryApplyAndClear(binding, (x, binding) => binding.intensity = x);
+            shadowStrengthMixer.TryApplyAndClear(binding, (x, binding) => binding.shadowStrength = x);
         }
     }
 }

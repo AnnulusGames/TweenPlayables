@@ -39,38 +39,16 @@ namespace TweenPlayables
 
         public override void Blend(Renderer binding, TweenRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.Color.IsActive)
-            {
-                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.TextureOffset.IsActive)
-            {
-                textureOffsetMixer.Blend(behaviour.TextureOffset.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.TextureScale.IsActive)
-            {
-                textureScaleMixer.Blend(behaviour.TextureScale.Evaluate(binding, progress), weight);
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            textureOffsetMixer.TryBlend(behaviour.TextureOffset, binding, progress, weight);
+            textureScaleMixer.TryBlend(behaviour.TextureScale, binding, progress, weight);
         }
 
         public override void Apply(Renderer binding)
         {
-            if (colorMixer.HasValue)
-            {
-                materialDictionary[binding].color = colorMixer.Value;
-            }
-            if (textureOffsetMixer.HasValue)
-            {
-                materialDictionary[binding].mainTextureOffset = textureOffsetMixer.Value;
-            }
-            if (textureScaleMixer.HasValue)
-            {
-                materialDictionary[binding].mainTextureScale = textureScaleMixer.Value;
-            }
-
-            colorMixer.Clear();
-            textureOffsetMixer.Clear();
-            textureScaleMixer.Clear();
+            colorMixer.TryApplyAndClear(materialDictionary[binding], (x, binding) => binding.color = x);
+            textureOffsetMixer.TryApplyAndClear(materialDictionary[binding], (x, binding) => binding.mainTextureOffset = x);
+            textureScaleMixer.TryApplyAndClear(materialDictionary[binding], (x, binding) => binding.mainTextureScale = x);
         }
     }
 }

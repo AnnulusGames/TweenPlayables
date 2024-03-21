@@ -11,47 +11,18 @@ namespace TweenPlayables
 
         public override void Blend(RectTransform binding, TweenRectTransformBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.AnchoredPosition.IsActive)
-            {
-                anchoredPositionMixer.Blend(behaviour.AnchoredPosition.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.SizeDelta.IsActive)
-            {
-                sizeDeltaMixer.Blend(behaviour.SizeDelta.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.Rotation.IsActive)
-            {
-                rotationMixer.Blend(behaviour.Rotation.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.Scale.IsActive)
-            {
-                scaleMixer.Blend(behaviour.Scale.Evaluate(binding, progress), weight);
-            }
+            anchoredPositionMixer.TryBlend(behaviour.AnchoredPosition, binding, progress, weight);
+            sizeDeltaMixer.TryBlend(behaviour.SizeDelta, binding, progress, weight);
+            rotationMixer.TryBlend(behaviour.Rotation, binding, progress, weight);
+            scaleMixer.TryBlend(behaviour.Scale, binding, progress, weight);
         }
 
         public override void Apply(RectTransform binding)
         {
-            if (anchoredPositionMixer.HasValue)
-            {
-                binding.anchoredPosition3D = anchoredPositionMixer.Value;
-            }
-            if (sizeDeltaMixer.HasValue)
-            {
-                binding.sizeDelta = sizeDeltaMixer.Value;
-            }
-            if (rotationMixer.HasValue)
-            {
-                binding.localEulerAngles = rotationMixer.Value;
-            }
-            if (scaleMixer.HasValue)
-            {
-                binding.localScale = scaleMixer.Value;
-            }
-
-            anchoredPositionMixer.Clear();
-            sizeDeltaMixer.Clear();
-            rotationMixer.Clear();
-            scaleMixer.Clear();
+            anchoredPositionMixer.TryApplyAndClear(binding, (x, binding) => binding.anchoredPosition3D = x);
+            sizeDeltaMixer.TryApplyAndClear(binding, (x, binding) => binding.sizeDelta = x);
+            rotationMixer.TryApplyAndClear(binding, (x, binding) => binding.localEulerAngles = x);
+            scaleMixer.TryApplyAndClear(binding, (x, binding) => binding.localScale = x);
         }
     }
 }

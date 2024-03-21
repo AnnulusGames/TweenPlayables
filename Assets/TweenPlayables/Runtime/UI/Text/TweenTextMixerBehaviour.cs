@@ -2,27 +2,20 @@ using UnityEngine.UI;
 
 namespace TweenPlayables
 {
-    public class TweenTextMixerBehaviour : TweenAnimationMixerBehaviour<Text, TweenTextBehaviour>
+    public sealed class TweenTextMixerBehaviour : TweenAnimationMixerBehaviour<Text, TweenTextBehaviour>
     {
-        private readonly ColorValueMixer colorMixer = new();
-        private readonly IntValueMixer fontSizeMixer = new();
-        private readonly FloatValueMixer lineSpacingMixer = new();
-        private string textValue = null;
+        readonly ColorValueMixer colorMixer = new();
+        readonly IntValueMixer fontSizeMixer = new();
+        readonly FloatValueMixer lineSpacingMixer = new();
+
+        string textValue = null;
 
         public override void Blend(Text binding, TweenTextBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.Color.IsActive)
-            {
-                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.FontSize.IsActive)
-            {
-                fontSizeMixer.Blend(behaviour.FontSize.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.LineSpacing.IsActive)
-            {
-                lineSpacingMixer.Blend(behaviour.LineSpacing.Evaluate(binding, progress), weight);
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            fontSizeMixer.TryBlend(behaviour.FontSize, binding, progress, weight);
+            lineSpacingMixer.TryBlend(behaviour.LineSpacing, binding, progress, weight);
+
             if (behaviour.Text.IsActive)
             {
                 textValue = behaviour.Text.Evaluate(binding, progress);
@@ -31,27 +24,15 @@ namespace TweenPlayables
 
         public override void Apply(Text binding)
         {
-            if (colorMixer.HasValue)
-            {
-                binding.color = colorMixer.Value;
-            }
-            if (fontSizeMixer.HasValue)
-            {
-                binding.fontSize = fontSizeMixer.Value;
-            }
-            if (lineSpacingMixer.HasValue)
-            {
-                binding.lineSpacing = lineSpacingMixer.Value;
-            }
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
+            fontSizeMixer.TryApplyAndClear(binding, (x, binding) => binding.fontSize = x);
+            lineSpacingMixer.TryApplyAndClear(binding, (x, binding) => binding.lineSpacing = x);
+
             if (textValue != null)
             {
                 binding.text = textValue;
+                textValue = null;
             }
-
-            colorMixer.Clear();
-            fontSizeMixer.Clear();
-            lineSpacingMixer.Clear();
-            textValue = null;
         }
     }
 }

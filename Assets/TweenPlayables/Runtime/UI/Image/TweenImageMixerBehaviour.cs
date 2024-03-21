@@ -9,29 +9,14 @@ namespace TweenPlayables
 
         public override void Blend(Image binding, TweenImageBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.Color.IsActive)
-            {
-                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
-            }
-            if (behaviour.FillAmount.IsActive)
-            {
-                fillAmountMixer.Blend(behaviour.FillAmount.Evaluate(binding, progress), weight);
-            }
+            colorMixer.TryBlend(behaviour.Color, binding, progress, weight);
+            fillAmountMixer.TryBlend(behaviour.FillAmount, binding, progress, weight);
         }
 
         public override void Apply(Image binding)
         {
-            if (colorMixer.HasValue)
-            {
-                binding.color = colorMixer.Value;
-            }
-            if (fillAmountMixer.HasValue)
-            {
-                binding.fillAmount = fillAmountMixer.Value;
-            }
-
-            colorMixer.Clear();
-            fillAmountMixer.Clear();
+            colorMixer.TryApplyAndClear(binding, (x, binding) => binding.color = x);
+            fillAmountMixer.TryApplyAndClear(binding, (x, binding) => binding.fillAmount = x);
         }
     }
 }

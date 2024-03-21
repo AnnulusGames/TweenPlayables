@@ -2,15 +2,15 @@ using UnityEngine.UI;
 
 namespace TweenPlayables
 {
-    public class TweenSliderMixerBehaviour : TweenAnimationMixerBehaviour<Slider, TweenSliderBehaviour>
+    public sealed class TweenSliderMixerBehaviour : TweenAnimationMixerBehaviour<Slider, TweenSliderBehaviour>
     {
-        private FloatValueMixer valueMixer = new();
+        readonly FloatValueMixer valueMixer = new();
 
         public override void Blend(Slider binding, TweenSliderBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.value.IsActive)
+            if (behaviour.Value.IsActive)
             {
-                valueMixer.Blend(behaviour.value.Evaluate(binding, progress), weight);
+                valueMixer.Blend(behaviour.Value.Evaluate(binding, progress), weight);
             }
         }
 
@@ -24,5 +24,4 @@ namespace TweenPlayables
             valueMixer.Clear();
         }
     }
-
 }

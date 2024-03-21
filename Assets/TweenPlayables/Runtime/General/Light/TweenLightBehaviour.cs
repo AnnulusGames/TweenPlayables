@@ -4,11 +4,15 @@ using UnityEngine;
 namespace TweenPlayables
 {
     [Serializable]
-    public class TweenLightBehaviour : TweenAnimationBehaviour<Light>
+    public sealed class TweenLightBehaviour : TweenAnimationBehaviour<Light>
     {
-        public ColorTweenParameter color;
-        public FloatTweenParameter intensity;
-        public FloatTweenParameter shadowStrength;
+        [SerializeField] ColorTweenParameter color;
+        [SerializeField] FloatTweenParameter intensity;
+        [SerializeField] FloatTweenParameter shadowStrength;
+
+        public ReadOnlyTweenParameter<Color> Color => color;
+        public ReadOnlyTweenParameter<float> Intensity => intensity;
+        public ReadOnlyTweenParameter<float> ShadowStrength => shadowStrength;
 
         public override void OnTweenInitialize(Light playerData)
         {
@@ -17,5 +21,4 @@ namespace TweenPlayables
             shadowStrength.SetInitialValue(playerData, playerData.shadowStrength);
         }
     }
-
 }

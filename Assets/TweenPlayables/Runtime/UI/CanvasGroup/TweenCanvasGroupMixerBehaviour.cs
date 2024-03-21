@@ -2,15 +2,15 @@ using UnityEngine;
 
 namespace TweenPlayables
 {
-    public class TweenCanvasGroupMixerBehaviour : TweenAnimationMixerBehaviour<CanvasGroup, TweenCanvasGroupBehaviour>
+    public sealed class TweenCanvasGroupMixerBehaviour : TweenAnimationMixerBehaviour<CanvasGroup, TweenCanvasGroupBehaviour>
     {
-        private FloatValueMixer alphaMixer = new();
+        readonly FloatValueMixer alphaMixer = new();
 
         public override void Blend(CanvasGroup binding, TweenCanvasGroupBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.alpha.IsActive)
+            if (behaviour.Alpha.IsActive)
             {
-                alphaMixer.Blend(behaviour.alpha.Evaluate(binding, progress), weight);
+                alphaMixer.Blend(behaviour.Alpha.Evaluate(binding, progress), weight);
             }
         }
 
@@ -24,5 +24,4 @@ namespace TweenPlayables
             alphaMixer.Clear();
         }
     }
-
 }

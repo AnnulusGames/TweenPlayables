@@ -4,25 +4,25 @@ namespace TweenPlayables
 {
     public class TweenTransformMixerBehaviour : TweenAnimationMixerBehaviour<Transform, TweenTransformBehaviour>
     {
-        private Vector3ValueMixer positionMixer = new();
-        private Vector3ValueMixer rotationMixer = new();
-        private Vector3ValueMixer scaleMixer = new();
+        readonly Vector3ValueMixer positionMixer = new();
+        readonly Vector3ValueMixer rotationMixer = new();
+        readonly Vector3ValueMixer scaleMixer = new();
 
         public override void Blend(Transform binding, TweenTransformBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.position.IsActive)
+            if (behaviour.Position.IsActive)
             {
-                positionMixer.Blend(behaviour.position.Evaluate(binding, progress), weight);
+                positionMixer.Blend(behaviour.Position.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.rotation.IsActive)
+            if (behaviour.Rotation.IsActive)
             {
-                rotationMixer.Blend(behaviour.rotation.Evaluate(binding, progress), weight);
+                rotationMixer.Blend(behaviour.Rotation.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.scale.IsActive)
+            if (behaviour.Scale.IsActive)
             {
-                scaleMixer.Blend(behaviour.scale.Evaluate(binding, progress), weight);
+                scaleMixer.Blend(behaviour.Scale.Evaluate(binding, progress), weight);
             }
         }
 

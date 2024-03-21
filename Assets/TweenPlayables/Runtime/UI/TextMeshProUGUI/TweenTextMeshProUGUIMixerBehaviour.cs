@@ -2,50 +2,51 @@ using TMPro;
 
 namespace TweenPlayables
 {
-    public class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
+    public sealed class TweenTextMeshProUGUIMixerBehaviour : TweenAnimationMixerBehaviour<TextMeshProUGUI, TweenTextMeshProUGUIBehaviour>
     {
-        private ColorValueMixer colorMixer = new();
-        private FloatValueMixer fontSizeMixer = new();
-        private FloatValueMixer characterSpacingMixer = new();
-        private FloatValueMixer wordSpacingMixer = new();
-        private FloatValueMixer lineSpacingMixer = new();
-        private FloatValueMixer paragraphSpacingMixer = new();
-        private VertexGradientValueMixer colorGradientMixer = new();
-        private string textValue = null;
+        readonly ColorValueMixer colorMixer = new();
+        readonly FloatValueMixer fontSizeMixer = new();
+        readonly FloatValueMixer characterSpacingMixer = new();
+        readonly FloatValueMixer wordSpacingMixer = new();
+        readonly FloatValueMixer lineSpacingMixer = new();
+        readonly FloatValueMixer paragraphSpacingMixer = new();
+        readonly VertexGradientValueMixer colorGradientMixer = new();
+
+        string textValue = null;
 
         public override void Blend(TextMeshProUGUI binding, TweenTextMeshProUGUIBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.IsActive)
+            if (behaviour.Color.IsActive)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
+                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.fontSize.IsActive)
+            if (behaviour.FontSize.IsActive)
             {
-                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
+                fontSizeMixer.Blend(behaviour.FontSize.Evaluate(binding, progress), weight);
             }
-            if (behaviour.characterSpacing.IsActive)
+            if (behaviour.CharacterSpacing.IsActive)
             {
-                characterSpacingMixer.Blend(behaviour.characterSpacing.Evaluate(binding, progress), weight);
+                characterSpacingMixer.Blend(behaviour.CharacterSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.wordSpacing.IsActive)
+            if (behaviour.WordSpacing.IsActive)
             {
-                wordSpacingMixer.Blend(behaviour.wordSpacing.Evaluate(binding, progress), weight);
+                wordSpacingMixer.Blend(behaviour.WordSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.lineSpacing.IsActive)
+            if (behaviour.LineSpacing.IsActive)
             {
-                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
+                lineSpacingMixer.Blend(behaviour.LineSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.paragraphSpacing.IsActive)
+            if (behaviour.ParagraphSpacing.IsActive)
             {
-                paragraphSpacingMixer.Blend(behaviour.paragraphSpacing.Evaluate(binding, progress), weight);
+                paragraphSpacingMixer.Blend(behaviour.ParagraphSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.colorGradient.IsActive)
+            if (behaviour.ColorGradient.IsActive)
             {
-                colorGradientMixer.Blend(behaviour.colorGradient.Evaluate(binding, progress), weight);
+                colorGradientMixer.Blend(behaviour.ColorGradient.Evaluate(binding, progress), weight);
             }
-            if (behaviour.text.IsActive)
+            if (behaviour.Text.IsActive)
             {
-                textValue = behaviour.text.Evaluate(binding, progress);
+                textValue = behaviour.Text.Evaluate(binding, progress);
             }
         }
 

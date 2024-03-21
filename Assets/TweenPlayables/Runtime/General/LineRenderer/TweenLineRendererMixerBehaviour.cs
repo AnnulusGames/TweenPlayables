@@ -2,69 +2,56 @@ using UnityEngine;
 
 namespace TweenPlayables
 {
-    public class TweenLineRendererMixerBehaviour : TweenAnimationMixerBehaviour<LineRenderer, TweenLineRendererBehaviour>
+    public sealed class TweenLineRendererMixerBehaviour : TweenAnimationMixerBehaviour<LineRenderer, TweenLineRendererBehaviour>
     {
-        private Color blendedStartColor;
-        private int startColorInputCount;
-        private Color blendedEndColor;
-        private int endColorInputCount;
-
-        private float blendedStartWidth;
-        private int startWidthInputCount;
-        private float blendedEndWidth;
-        private int endWidthInputCount;
+        readonly ColorValueMixer startColorMixer = new();
+        readonly ColorValueMixer endColorMixer = new();
+        readonly FloatValueMixer startWidthMixer = new();
+        readonly FloatValueMixer endWidthMixer = new();
 
         public override void Blend(LineRenderer binding, TweenLineRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.startColor.IsActive)
+            if (behaviour.StartColor.IsActive)
             {
-                blendedStartColor += behaviour.startColor.Evaluate(binding, progress) * weight;
-                startColorInputCount++;
+                startColorMixer.Blend(behaviour.StartColor.Evaluate(binding, progress), weight);
             }
-            if (behaviour.endColor.IsActive)
+            if (behaviour.EndColor.IsActive)
             {
-                blendedEndColor += behaviour.endColor.Evaluate(binding, progress) * weight;
-                endColorInputCount++;
+                endColorMixer.Blend(behaviour.EndColor.Evaluate(binding, progress), weight);
             }
-            if (behaviour.startWidth.IsActive)
+            if (behaviour.StartWidth.IsActive)
             {
-                blendedStartWidth += behaviour.startWidth.Evaluate(binding, progress) * weight;
-                startWidthInputCount++;
+                startWidthMixer.Blend(behaviour.StartWidth.Evaluate(binding, progress), weight);
             }
-            if (behaviour.endWidth.IsActive)
+            if (behaviour.EndWidth.IsActive)
             {
-                blendedEndWidth += behaviour.endWidth.Evaluate(binding, progress) * weight;
-                endWidthInputCount++;
+                endWidthMixer.Blend(behaviour.EndWidth.Evaluate(binding, progress), weight);
             }
         }
 
         public override void Apply(LineRenderer binding)
         {
-            if (startColorInputCount > 0)
+            if (startColorMixer.HasValue)
             {
-                binding.startColor = blendedStartColor;
+                binding.startColor = startColorMixer.Value;
             }
-            if (endColorInputCount > 0)
+            if (endColorMixer.HasValue)
             {
-                binding.endColor = blendedEndColor;
+                binding.endColor = endColorMixer.Value;
             }
-            if (startWidthInputCount > 0)
+            if (startWidthMixer.HasValue)
             {
-                binding.startWidth = blendedStartWidth;
+                binding.startWidth = startWidthMixer.Value;
             }
-            if (endWidthInputCount > 0)
+            if (endWidthMixer.HasValue)
             {
-                binding.endWidth = blendedEndWidth;
+                binding.endWidth = endWidthMixer.Value;
             }
 
-            blendedStartColor = Color.clear;
-            startColorInputCount = 0;
-            blendedEndColor = Color.clear;
-            endColorInputCount = 0;
-            blendedStartWidth = 0f;
-            startWidthInputCount = 0;
-            blendedEndWidth = 0f;
-            endWidthInputCount = 0;
+            startColorMixer.Clear();
+            endColorMixer.Clear();
+            startWidthMixer.Clear();
+            endWidthMixer.Clear();
         }
     }
 

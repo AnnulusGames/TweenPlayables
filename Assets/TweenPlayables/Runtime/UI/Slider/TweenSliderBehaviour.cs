@@ -1,17 +1,19 @@
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace TweenPlayables
 {
     [Serializable]
-    public class TweenSliderBehaviour : TweenAnimationBehaviour<Slider>
+    public sealed class TweenSliderBehaviour : TweenAnimationBehaviour<Slider>
     {
-        public FloatTweenParameter value;
+        [SerializeField] FloatTweenParameter value;
+
+        public ReadOnlyTweenParameter<float> Value => value;
 
         public override void OnTweenInitialize(Slider playerData)
         {
             value.SetInitialValue(playerData, playerData.value);
         }
     }
-
 }

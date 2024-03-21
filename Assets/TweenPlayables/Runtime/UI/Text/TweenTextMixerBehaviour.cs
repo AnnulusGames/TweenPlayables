@@ -4,28 +4,28 @@ namespace TweenPlayables
 {
     public class TweenTextMixerBehaviour : TweenAnimationMixerBehaviour<Text, TweenTextBehaviour>
     {
-        private ColorValueMixer colorMixer = new();
-        private IntValueMixer fontSizeMixer = new();
-        private FloatValueMixer lineSpacingMixer = new();
+        private readonly ColorValueMixer colorMixer = new();
+        private readonly IntValueMixer fontSizeMixer = new();
+        private readonly FloatValueMixer lineSpacingMixer = new();
         private string textValue = null;
 
         public override void Blend(Text binding, TweenTextBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.IsActive)
+            if (behaviour.Color.IsActive)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
+                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.fontSize.IsActive)
+            if (behaviour.FontSize.IsActive)
             {
-                fontSizeMixer.Blend(behaviour.fontSize.Evaluate(binding, progress), weight);
+                fontSizeMixer.Blend(behaviour.FontSize.Evaluate(binding, progress), weight);
             }
-            if (behaviour.lineSpacing.IsActive)
+            if (behaviour.LineSpacing.IsActive)
             {
-                lineSpacingMixer.Blend(behaviour.lineSpacing.Evaluate(binding, progress), weight);
+                lineSpacingMixer.Blend(behaviour.LineSpacing.Evaluate(binding, progress), weight);
             }
-            if (behaviour.text.IsActive)
+            if (behaviour.Text.IsActive)
             {
-                textValue = behaviour.text.Evaluate(binding, progress);
+                textValue = behaviour.Text.Evaluate(binding, progress);
             }
         }
 

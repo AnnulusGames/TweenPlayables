@@ -11,8 +11,5 @@ namespace TweenPlayables
 #if UNITY_EDITOR
     [DisplayName("Tween Playables/Audio/Tween AudioSource Track")]
 #endif
-    public class TweenAudioSourceTrack : TweenAnimationTrack<AudioSource, TweenAudioSourceMixerBehaviour, TweenAudioSourceBehaviour>
-    {
-
-    }
+    public sealed class TweenAudioSourceTrack : TweenAnimationTrack<AudioSource, TweenAudioSourceMixerBehaviour, TweenAudioSourceBehaviour> { }
 }

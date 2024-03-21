@@ -4,11 +4,15 @@ using UnityEngine;
 namespace TweenPlayables
 {
     [Serializable]
-    public class TweenCameraBehaviour : TweenAnimationBehaviour<Camera>
+    public sealed class TweenCameraBehaviour : TweenAnimationBehaviour<Camera>
     {
-        public FloatTweenParameter orthographicSize;
-        public FloatTweenParameter fieldOfView;
-        public ColorTweenParameter backgroundColor;
+        [SerializeField] FloatTweenParameter orthographicSize;
+        [SerializeField] FloatTweenParameter fieldOfView;
+        [SerializeField] ColorTweenParameter backgroundColor;
+
+        public ReadOnlyTweenParameter<float> OrthographicSize => orthographicSize;
+        public ReadOnlyTweenParameter<float> FieldOfView => fieldOfView;
+        public ReadOnlyTweenParameter<Color> BackgroundColor => backgroundColor;
 
         public override void OnTweenInitialize(Camera playerData)
         {
@@ -17,5 +21,4 @@ namespace TweenPlayables
             backgroundColor.SetInitialValue(playerData, playerData.backgroundColor);
         }
     }
-
 }

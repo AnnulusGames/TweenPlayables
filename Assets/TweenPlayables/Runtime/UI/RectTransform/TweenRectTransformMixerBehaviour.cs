@@ -11,21 +11,21 @@ namespace TweenPlayables
 
         public override void Blend(RectTransform binding, TweenRectTransformBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.anchoredPosition.IsActive)
+            if (behaviour.AnchoredPosition.IsActive)
             {
-                anchoredPositionMixer.Blend(behaviour.anchoredPosition.Evaluate(binding, progress), weight);
+                anchoredPositionMixer.Blend(behaviour.AnchoredPosition.Evaluate(binding, progress), weight);
             }
-            if (behaviour.sizeDelta.IsActive)
+            if (behaviour.SizeDelta.IsActive)
             {
-                sizeDeltaMixer.Blend(behaviour.sizeDelta.Evaluate(binding, progress), weight);
+                sizeDeltaMixer.Blend(behaviour.SizeDelta.Evaluate(binding, progress), weight);
             }
-            if (behaviour.rotation.IsActive)
+            if (behaviour.Rotation.IsActive)
             {
-                rotationMixer.Blend(behaviour.rotation.Evaluate(binding, progress), weight);
+                rotationMixer.Blend(behaviour.Rotation.Evaluate(binding, progress), weight);
             }
-            if (behaviour.scale.IsActive)
+            if (behaviour.Scale.IsActive)
             {
-                scaleMixer.Blend(behaviour.scale.Evaluate(binding, progress), weight);
+                scaleMixer.Blend(behaviour.Scale.Evaluate(binding, progress), weight);
             }
         }
 

@@ -11,5 +11,5 @@ namespace TweenPlayables
 #if UNITY_EDITOR
     [DisplayName("Tween Playables/UI/Tween Outline Track")]
 #endif
-    public class TweenOutlineTrack : TweenAnimationTrack<Outline, TweenOutlineMixerBehaviour, TweenOutlineBehaviour> { }
+    public sealed class TweenOutlineTrack : TweenAnimationTrack<Outline, TweenOutlineMixerBehaviour, TweenOutlineBehaviour> { }
 }

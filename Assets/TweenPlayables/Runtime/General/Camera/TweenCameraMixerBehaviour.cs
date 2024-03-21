@@ -2,27 +2,27 @@ using UnityEngine;
 
 namespace TweenPlayables
 {
-    public class TweenCameraMixerBehaviour : TweenAnimationMixerBehaviour<Camera, TweenCameraBehaviour>
+    public sealed class TweenCameraMixerBehaviour : TweenAnimationMixerBehaviour<Camera, TweenCameraBehaviour>
     {
-        private FloatValueMixer orthoSizeMixer = new();
-        private FloatValueMixer fovMixer = new();
-        private ColorValueMixer backgroundColorMixer = new();
+        readonly FloatValueMixer orthoSizeMixer = new();
+        readonly FloatValueMixer fovMixer = new();
+        readonly ColorValueMixer backgroundColorMixer = new();
 
         public override void Blend(Camera binding, TweenCameraBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.orthographicSize.IsActive)
+            if (behaviour.OrthographicSize.IsActive)
             {
-                orthoSizeMixer.Blend(behaviour.orthographicSize.Evaluate(binding, progress), weight);
+                orthoSizeMixer.Blend(behaviour.OrthographicSize.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.fieldOfView.IsActive)
+            if (behaviour.FieldOfView.IsActive)
             {
-                fovMixer.Blend(behaviour.fieldOfView.Evaluate(binding, progress), weight);
+                fovMixer.Blend(behaviour.FieldOfView.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.backgroundColor.IsActive)
+            if (behaviour.BackgroundColor.IsActive)
             {
-                backgroundColorMixer.Blend(behaviour.backgroundColor.Evaluate(binding, progress), weight);
+                backgroundColorMixer.Blend(behaviour.BackgroundColor.Evaluate(binding, progress), weight);
             }
         }
 
@@ -46,5 +46,4 @@ namespace TweenPlayables
             backgroundColorMixer.Clear();
         }
     }
-
 }

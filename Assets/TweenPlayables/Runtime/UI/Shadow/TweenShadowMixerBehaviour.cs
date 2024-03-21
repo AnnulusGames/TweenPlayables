@@ -4,18 +4,18 @@ namespace TweenPlayables
 {
     public class TweenShadowMixerBehaviour : TweenAnimationMixerBehaviour<Shadow, TweenShadowBehaviour>
     {
-        private ColorValueMixer colorMixer = new();
-        private Vector2ValueMixer distanceMixer = new();
+        readonly ColorValueMixer colorMixer = new();
+        readonly Vector2ValueMixer distanceMixer = new();
 
         public override void Blend(Shadow binding, TweenShadowBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.IsActive)
+            if (behaviour.Color.IsActive)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
+                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.distance.IsActive)
+            if (behaviour.Distance.IsActive)
             {
-                distanceMixer.Blend(behaviour.distance.Evaluate(binding, progress), weight);
+                distanceMixer.Blend(behaviour.Distance.Evaluate(binding, progress), weight);
             }
         }
 
@@ -34,5 +34,4 @@ namespace TweenPlayables
             distanceMixer.Clear();
         }
     }
-
 }

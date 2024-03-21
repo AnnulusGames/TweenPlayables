@@ -4,13 +4,13 @@ using UnityEngine.Playables;
 
 namespace TweenPlayables
 {
-    public class TweenRendererMixerBehaviour : TweenAnimationMixerBehaviour<Renderer, TweenRendererBehaviour>
+    public sealed class TweenRendererMixerBehaviour : TweenAnimationMixerBehaviour<Renderer, TweenRendererBehaviour>
     {
-        private ColorValueMixer colorMixer = new();
-        private Vector2ValueMixer textureOffsetMixer = new();
-        private Vector2ValueMixer textureScaleMixer = new();
+        readonly ColorValueMixer colorMixer = new();
+        readonly Vector2ValueMixer textureOffsetMixer = new();
+        readonly Vector2ValueMixer textureScaleMixer = new();
 
-        private Dictionary<object, Material> materialDictionary = new();
+        readonly Dictionary<object, Material> materialDictionary = new();
 
         public override void OnPlayableDestroy(Playable playable)
         {
@@ -39,17 +39,17 @@ namespace TweenPlayables
 
         public override void Blend(Renderer binding, TweenRendererBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.IsActive)
+            if (behaviour.Color.IsActive)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
+                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.textureOffset.IsActive)
+            if (behaviour.TextureOffset.IsActive)
             {
-                textureOffsetMixer.Blend(behaviour.textureOffset.Evaluate(binding, progress), weight);
+                textureOffsetMixer.Blend(behaviour.TextureOffset.Evaluate(binding, progress), weight);
             }
-            if (behaviour.textureScale.IsActive)
+            if (behaviour.TextureScale.IsActive)
             {
-                textureScaleMixer.Blend(behaviour.textureScale.Evaluate(binding, progress), weight);
+                textureScaleMixer.Blend(behaviour.TextureScale.Evaluate(binding, progress), weight);
             }
         }
 
@@ -73,5 +73,4 @@ namespace TweenPlayables
             textureScaleMixer.Clear();
         }
     }
-
 }

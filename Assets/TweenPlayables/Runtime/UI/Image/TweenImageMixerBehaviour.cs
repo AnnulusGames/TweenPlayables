@@ -2,20 +2,20 @@ using UnityEngine.UI;
 
 namespace TweenPlayables
 {
-    public class TweenImageMixerBehaviour : TweenAnimationMixerBehaviour<Image, TweenImageBehaviour>
+    public sealed class TweenImageMixerBehaviour : TweenAnimationMixerBehaviour<Image, TweenImageBehaviour>
     {
-        private ColorValueMixer colorMixer = new();
-        private FloatValueMixer fillAmountMixer = new();
+        readonly ColorValueMixer colorMixer = new();
+        readonly FloatValueMixer fillAmountMixer = new();
 
         public override void Blend(Image binding, TweenImageBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.color.IsActive)
+            if (behaviour.Color.IsActive)
             {
-                colorMixer.Blend(behaviour.color.Evaluate(binding, progress), weight);
+                colorMixer.Blend(behaviour.Color.Evaluate(binding, progress), weight);
             }
-            if (behaviour.fillAmount.IsActive)
+            if (behaviour.FillAmount.IsActive)
             {
-                fillAmountMixer.Blend(behaviour.fillAmount.Evaluate(binding, progress), weight);
+                fillAmountMixer.Blend(behaviour.FillAmount.Evaluate(binding, progress), weight);
             }
         }
 
@@ -34,5 +34,4 @@ namespace TweenPlayables
             fillAmountMixer.Clear();
         }
     }
-
 }

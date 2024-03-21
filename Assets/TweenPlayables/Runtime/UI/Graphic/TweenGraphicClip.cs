@@ -1,4 +1,4 @@
 namespace TweenPlayables
 {
-    public class TweenGraphicClip : TweenAnimationClip<TweenGraphicBehaviour> { }
+    public sealed class TweenGraphicClip : TweenAnimationClip<TweenGraphicBehaviour> { }
 }

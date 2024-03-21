@@ -11,5 +11,5 @@ namespace TweenPlayables
 #if UNITY_EDITOR
     [DisplayName("Tween Playables/General/Tween Renderer Track")]
 #endif
-    public class TweenRendererTrack : TweenAnimationTrack<Renderer, TweenRendererMixerBehaviour, TweenRendererBehaviour> { }
+    public sealed class TweenRendererTrack : TweenAnimationTrack<Renderer, TweenRendererMixerBehaviour, TweenRendererBehaviour> { }
 }

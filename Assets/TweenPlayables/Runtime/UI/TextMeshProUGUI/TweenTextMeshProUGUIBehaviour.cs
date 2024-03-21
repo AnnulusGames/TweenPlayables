@@ -1,20 +1,29 @@
 using System;
-using UnityEngine.UI;
+using UnityEngine;
 using TMPro;
 
 namespace TweenPlayables
 {
     [Serializable]
-    public class TweenTextMeshProUGUIBehaviour : TweenAnimationBehaviour<TextMeshProUGUI>
+    public sealed class TweenTextMeshProUGUIBehaviour : TweenAnimationBehaviour<TextMeshProUGUI>
     {
-        public ColorTweenParameter color;
-        public FloatTweenParameter fontSize;
-        public FloatTweenParameter characterSpacing;
-        public FloatTweenParameter wordSpacing;
-        public FloatTweenParameter lineSpacing;
-        public FloatTweenParameter paragraphSpacing;
-        public VertexGradientTweenParamterer colorGradient;
-        public StringTweenParameter text;
+        [SerializeField] ColorTweenParameter color;
+        [SerializeField] FloatTweenParameter fontSize;
+        [SerializeField] FloatTweenParameter characterSpacing;
+        [SerializeField] FloatTweenParameter wordSpacing;
+        [SerializeField] FloatTweenParameter lineSpacing;
+        [SerializeField] FloatTweenParameter paragraphSpacing;
+        [SerializeField] VertexGradientTweenParamterer colorGradient;
+        [SerializeField] StringTweenParameter text;
+
+        public ReadOnlyTweenParameter<Color> Color => color;
+        public ReadOnlyTweenParameter<float> FontSize => fontSize;
+        public ReadOnlyTweenParameter<float> CharacterSpacing => characterSpacing;
+        public ReadOnlyTweenParameter<float> WordSpacing => wordSpacing;
+        public ReadOnlyTweenParameter<float> LineSpacing => lineSpacing;
+        public ReadOnlyTweenParameter<float> ParagraphSpacing => paragraphSpacing;
+        public ReadOnlyTweenParameter<VertexGradient> ColorGradient => colorGradient;
+        public ReadOnlyTweenParameter<string> Text => text;
 
         public override void OnTweenInitialize(TextMeshProUGUI playerData)
         {
@@ -28,5 +37,4 @@ namespace TweenPlayables
             text.SetInitialValue(playerData, playerData.text);
         }
     }
-
 }

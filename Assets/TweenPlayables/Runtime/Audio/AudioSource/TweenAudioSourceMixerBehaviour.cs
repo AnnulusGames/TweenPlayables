@@ -2,21 +2,21 @@ using UnityEngine;
 
 namespace TweenPlayables
 {
-    public class TweenAudioSourceMixerBehaviour : TweenAnimationMixerBehaviour<AudioSource, TweenAudioSourceBehaviour>
+    public sealed class TweenAudioSourceMixerBehaviour : TweenAnimationMixerBehaviour<AudioSource, TweenAudioSourceBehaviour>
     {
-        private FloatValueMixer volumeMixer = new();
-        private FloatValueMixer pitchMixer = new();
+        readonly FloatValueMixer volumeMixer = new();
+        readonly FloatValueMixer pitchMixer = new();
 
         public override void Blend(AudioSource binding, TweenAudioSourceBehaviour behaviour, float weight, float progress)
         {
-            if (behaviour.volume.IsActive)
+            if (behaviour.Volume.IsActive)
             {
-                volumeMixer.Blend(behaviour.volume.Evaluate(binding, progress), weight);
+                volumeMixer.Blend(behaviour.Volume.Evaluate(binding, progress), weight);
             }
 
-            if (behaviour.pitch.IsActive)
+            if (behaviour.Pitch.IsActive)
             {
-                pitchMixer.Blend(behaviour.pitch.Evaluate(binding, progress), weight);
+                pitchMixer.Blend(behaviour.Pitch.Evaluate(binding, progress), weight);
             }
         }
 
@@ -35,5 +35,4 @@ namespace TweenPlayables
             pitchMixer.Clear();
         }
     }
-
 }
